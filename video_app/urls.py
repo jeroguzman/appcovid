@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import HomeView, RoomView
 from .api_views import create_room, end_room
+
 app_name = 'video_app'
 
 urlpatterns = [
