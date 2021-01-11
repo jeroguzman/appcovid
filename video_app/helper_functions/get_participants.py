@@ -8,7 +8,7 @@ client = Client(twilio_api_key_sid, twilio_api_key_secret)
 def get_participants(room_name):
     participants = client.video.rooms(room_name).participants
     participants_list=[]
-    for participant in participants.list(status='connected'):
+    for participant in participants.list(status='conectado'):
         participant = participant.fetch().sid
         participants_list.append(participant)
     return(participants_list)

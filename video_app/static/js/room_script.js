@@ -112,17 +112,17 @@ const leaveRoom = async() => {
 
 const disconnected = (room, error)=>{
   if (error) {
-    console.log('Unexpectedly disconnected:  room.on(disconnected, fun', error);
+    console.log('Desconexion inesperada:  room.on(disconnected, fun', error);
   }
   room.localParticipant.tracks.forEach(function(track) {
-    console.log('Unexpectedly disconnected:  room.on(disconnected, fun')
+    console.log('Desconexion inesperada:  room.on(disconnected, fun')
     track.track.stop();
     track.track.detach();
   });
 }
 
 function participantConnected(participant) {
-  console.log('Participant "%s" connected', participant.identity);
+  console.log('Participante "%s" conectado', participant.identity);
   const div = document.getElementsByClassName('remote_div')[0]
   window.existing_remote_div = div
 

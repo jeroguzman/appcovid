@@ -32,5 +32,5 @@ def create_room(request):
 
 
 def end_room(request, room_sid):
-    room = client.video.rooms(room_sid).update(status='completed')
+    room = client.video.rooms(room_sid).update(status='completado')
     return JsonResponse({"room_status": 'gud'})
