@@ -1,0 +1,21 @@
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+<!DOCTYPE html> 
+<html lang="es">
+    <head>
+    </head>
+<body>
+
+<h1>Llamada Finalizada</h1>
+
+<div>
+    {% buttons %}
+        <a href="{% url 'videollamada:videollamada' %}"><button type="button" class="btn btn-primary">Volver a Inicio</button></a>
+    {% endbuttons %}
+</div>
+
+</body>
+</html>
