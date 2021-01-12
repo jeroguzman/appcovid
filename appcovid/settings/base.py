@@ -1,22 +1,19 @@
 from pathlib import Path
 import os
-
-# False if not in os.environ
-DEBUG = True
-
+from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).parents[2]
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(f(xkfxgvr=7e=hl8k0n^@qce^-4p@5d-f$i6i8-rxad5-)im0'
+SECRET_KEY = 'x5mx=-frw*(3rq9d8+__2ndj5w#=wy(9qk)4pd8v^ke3e^k7vn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -33,11 +30,15 @@ INSTALLED_APPS = [
     #local apps
     'applications.login',
     'applications.register',
+    'bootstrap4',
+    'corsheaders',
+    'videollamada',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -68,18 +69,18 @@ WSGI_APPLICATION = 'appcovid.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'dbappcovid',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
 
 # Password validation
-# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -98,11 +99,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
+# https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-MX'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'MST'
 
 USE_I18N = True
 
@@ -110,11 +111,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-INTERNAL_IPS = [
-    '127.0.0.1', '192.168.1.173',
 
-]
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-TWILIO_ACCOUNT_SID = "ACcfc3b7877121beb8e5ade51f701e7947"
-TWILIO_API_KEY_SID = "SKaba0436661d0e6a4a2436f4b7a9526df"
-TWILIO_API_KEY_SECRET = "D3qdE6HhDYp2Tvb00td4EUFfVXMhJbY0"
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'

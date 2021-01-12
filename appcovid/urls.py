@@ -4,7 +4,7 @@ from video_app import urls as vdo_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('video/', include(vdo_urls)),
+    path('videollamada/', include('videollamada.urls')),
     re_path('', include('applications.login.urls')),
     re_path('', include('applications.register.urls')),
 ]
