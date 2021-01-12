@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'agora',
     'bootstrap4',
     'corsheaders',
-    'inicio',
+    'videollamada',
 ]
 
 MIDDLEWARE = [
