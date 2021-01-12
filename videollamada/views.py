@@ -12,8 +12,8 @@ class AgoraVideoCall(View):
     app_id=''
     channel = ''
     permission_class = 'AllowAny'
-    channel_end_url = '/success/'
-    title = 'Agora Demo'
+    channel_end_url = '/videollamada/'
+    title = 'Videollamada Medica'
 
     def get_permission(self,request,permission_class):
         if permission_class == 'AllowAny':
