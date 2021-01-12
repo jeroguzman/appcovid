@@ -93,6 +93,8 @@ class RegisterForm(forms.ModelForm):
             'avisoPrivacidad': 'He leido el aviso de privacidad',
         }
 
+
+    ##borrar####
     def clean_cp(self):
         cp = self.cleaned_data['cp']
         if cp < 50000:

@@ -25,14 +25,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'video_app',
-    'video_app.helper_functions',
-    #local apps
-    'applications.login',
-    'applications.register',
     'bootstrap4',
     'corsheaders',
+    #local apps
     'videollamada',
+    'applications.login',
+    'applications.register',
 ]
 
 MIDDLEWARE = [
