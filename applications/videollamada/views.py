@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 
 def videollamada(request):
-    return render(request, 'videollamada.html')
+    return render(request, 'videollamada/videollamada.html')
 
 
 
@@ -48,7 +48,7 @@ class AgoraVideoCall(View):
         stat = self.checkAll(request)
         print(self.app_id,self.channel)
         if stat:
-            return render(request,'index.html',{
+            return render(request,'videollamada/index.html',{
                     'agora_id':self.app_id,
                     'channel':self.channel,
                     'channel_end_url':self.channel_end_url,
