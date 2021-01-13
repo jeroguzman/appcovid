@@ -8,7 +8,7 @@ ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', '192.168.1.173', '178.128.76.91']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'dbappcovid',
+        'NAME': 'dbappcovid.sqlite3',
     }
 }
 
