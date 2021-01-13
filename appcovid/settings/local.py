@@ -5,13 +5,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', '192.168.1.173', '178.128.76.91']
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'dbappcovid.sqlite3',
-    }
-}
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
