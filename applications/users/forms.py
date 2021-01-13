@@ -1,10 +1,44 @@
 from django import forms
 from .models import User
 
-class RegisterForm(forms.ModelForm):
+class UserRegisterForm(forms.ModelForm):
+
+    password1 = forms.CharField(
+        label = '',
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder' : 'Contraseña',
+                'class' : 'form-control',
+            }
+        )
+    )
+    password2 = forms.CharField(
+        label = '',
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder' : 'Repetir Contraseña',
+                'class' : 'form-control',
+            }
+        )
+    )
+
     class Meta:
+        #nombre, apellido paterno, apellido materno, edad, sexo, direccion, cp, telefono, correo, contrasena, confirmar contrasena, aviso de privacidad
         model = User
-        fields = ('__all__')
+        fields = (
+            'nombre',
+            'aPaterno',
+            'aMaterno',
+            'edad',
+            'sexo',
+            'direccion',
+            'cp',
+            'telefono',
+            'correo',
+            'avisoPrivacidad',
+        )
 
         widgets = {
             'nombre': forms.TextInput(
@@ -61,18 +95,6 @@ class RegisterForm(forms.ModelForm):
                     'class': 'form-control',
                 }
             ),
-            'contrasena': forms.PasswordInput(
-                attrs={
-                    'placeholder' : 'Contraseña',
-                    'class': 'form-control',
-                }
-            ),
-            'contrasena2': forms.PasswordInput(
-                attrs={
-                    'placeholder' : 'Repita su contraseña',
-                    'class': 'form-control',
-                }
-            ),
             'avisoPrivacidad': forms.CheckboxInput(
                 attrs={
                     'class': 'form-check-input',
@@ -88,15 +110,10 @@ class RegisterForm(forms.ModelForm):
             'direccion': '',
             'cp': '',
             'telefono': '',
-            'contrasena': '',
-            'contrasena2': '',
+            'correo': '',
             'avisoPrivacidad': 'He leido el aviso de privacidad',
         }
 
-
-    ##borrar####
-    def clean_cp(self):
-        cp = self.cleaned_data['cp']
-        if cp < 50000:
-            raise forms.ValidationError('Ingrese un código postal válido')
-        return cp
+    def clean_password2(self):
+        if self.cleaned_data['password1'] != self.cleaned_data['password2']:
+            self.add_error('password1', 'Las contraseñas no coinciden')

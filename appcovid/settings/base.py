@@ -1,6 +1,5 @@
 from pathlib import Path
 import os
-from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).parents[2]
@@ -31,6 +30,7 @@ INSTALLED_APPS = [
     'applications.videollamada',
     'applications.login',
     'applications.register',
+    'applications.users',
 ]
 
 MIDDLEWARE = [
@@ -84,6 +84,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+AUTH_USER_MODEL = 'users.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
