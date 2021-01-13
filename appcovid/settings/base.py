@@ -1,6 +1,5 @@
 from pathlib import Path
 import os
-from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).parents[2]
