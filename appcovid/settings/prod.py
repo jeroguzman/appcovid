@@ -1,7 +1,7 @@
 from .base import *
 
 # False if not in os.environ
-DEBUG = False
+DEBUG = True
 
 # DEBUG = True
 
@@ -22,7 +22,7 @@ DATABASES = {
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR2, 'static')
+
 
 #STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, "static"),
