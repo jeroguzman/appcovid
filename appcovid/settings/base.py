@@ -17,21 +17,26 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
-INSTALLED_APPS = [
+DJANGO_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+)
+
+LOCAL_APPS = (
+    'applications.videollamada',
+    'applications.users',
+)
+
+THIRD_PARTY_APPS = (
     'bootstrap4',
     'corsheaders',
-    #local apps
-    'applications.videollamada',
-    'applications.login',
-    'applications.register',
-    'applications.users',
-]
+)
+
+INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -64,20 +69,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'appcovid.wsgi.application'
-
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'appcovid_db',
-        'USER': 'appcovid',
-        'PASSWORD': 'pitic2020',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
 
 
 # Password validation
