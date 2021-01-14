@@ -1,25 +1,24 @@
+{% extends '../base.html' %}
 {% load static %}
-{% load bootstrap4 %}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
 
-<!DOCTYPE html> 
-<html lang="es">
-    <head>
-    <title>Inicio</title>
-    </head>
-<body>
+<!-- Estilos adicionales -->
+{% block estilos-adicionales %}
+{% endblock estilos-adicionales %}
 
+<!-- Titulo -->
+{% block title %}
+    Videollamada
+{% endblock title %}
+    
+<!-- Cuerpo -->
+{% block body %}
 <h1>Inicio</h1>
 
 
 
 <div>
-    {% buttons %}
         <a href="{% url 'videollamada:medico1' %}"><button type="button" class="btn btn-primary">Solicitar Videollamada</button></a>
-    {% endbuttons %}
 </div>
 
 
-</body>
-</html>
+{% endblock body %}
