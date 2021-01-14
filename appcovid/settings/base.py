@@ -28,6 +28,7 @@ DJANGO_APPS = (
 
 LOCAL_APPS = (
     'applications.videollamada',
+    'applications.home',
     'applications.users',
 )
 

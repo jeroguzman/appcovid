@@ -1,8 +1,19 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy, reverse
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect
+from django.views.generic import(
+    View
+)
 from django.views.generic.edit import (
     FormView
 )
-from .forms import UserRegisterForm
+from .forms import(
+    UserRegisterForm,
+    UserLoginForm,
+    UserUpdatePasswordForm,
+)
+    
 from .models import User
 
 class UserRegisterView(FormView):
@@ -23,6 +34,48 @@ class UserRegisterView(FormView):
             direccion = form.cleaned_data['direccion'],
             cp = form.cleaned_data['cp'],
             avisoPrivacidad = form.cleaned_data['avisoPrivacidad'],
-
         )
         return super(UserRegisterView, self).form_valid(form)
+
+class UserLoginView(FormView):
+    template_name = 'users/login.html'
+    form_class = UserLoginForm
+    success_url = reverse_lazy('home_app:home')
+
+    def form_valid(self, form):
+        user = authenticate(
+            telefono = form.cleaned_data['telefono'],
+            password = form.cleaned_data['password1']
+        )
+        login(self.request, user)
+
+        return super(UserLoginView, self).form_valid(form)
+
+class UserLogoutView(View):
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return HttpResponseRedirect(
+            reverse(
+                'users_app:user-login'
+            )
+        )
+
+class UserUpdatePasswordView(FormView):
+    template_name = 'users/update-password.html'
+    form_class = UserUpdatePasswordForm
+    success_url = reverse_lazy('users_app:user-login')
+
+    def form_valid(self, form):
+        usuario = self.request.user
+        user = authenticate(
+            telefono = usuario.telefono,
+            password = form.cleaned_data['password1']
+        )
+        if user:
+            new_password = form.cleaned_data['password2']
+            usuario.set_password(new_password)
+            usuario.save()
+
+        logout(self.request)
+
+        return super(UserUpdatePasswordView, self).form_valid(form)

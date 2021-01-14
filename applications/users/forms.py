@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth import authenticate
 from .models import User
 
 class UserRegisterForm(forms.ModelForm):
@@ -117,3 +118,59 @@ class UserRegisterForm(forms.ModelForm):
     def clean_password2(self):
         if self.cleaned_data['password1'] != self.cleaned_data['password2']:
             self.add_error('password1', 'Las contraseñas no coinciden')
+
+class UserLoginForm(forms.Form):
+    telefono = forms.CharField(
+        label = '',
+        required=True,
+        widget=forms.NumberInput(
+            attrs={
+                'placeholder' : 'Telefono',
+                'class' : 'form-control',
+            }
+        )
+    )
+    password1 = forms.CharField(
+        label = '',
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder' : 'Contraseña',
+                'class' : 'form-control',
+            }
+        )
+    )
+
+    def clean(self):
+        cleaned_data = super(UserLoginForm, self).clean()
+        telefono = self.cleaned_data['telefono']
+        password1 = self.cleaned_data['password1']
+
+        if not authenticate(telefono = telefono, password = password1):
+            raise forms.ValidationError('Los datos del usuario no son correctos')
+        
+        return self.cleaned_data
+
+class UserUpdatePasswordForm(forms.Form):
+        password1 = forms.CharField(
+            label = '',
+            required=True,
+            widget=forms.PasswordInput(
+                attrs={
+                    'placeholder' : 'Contraseña Actual',
+                    'class' : 'form-control',
+                }
+            )
+        )
+        password2 = forms.CharField(
+            label = '',
+            required=True,
+            widget=forms.PasswordInput(
+                attrs={
+                    'placeholder' : 'Contraseña Nueva',
+                    'class' : 'form-control',
+                }
+            )
+        )
+
+
