@@ -103,6 +103,12 @@ class UserRegisterForm(forms.ModelForm):
             ),
         }
 
+        # error_messages = {
+        #     'nombre' : {
+        #         'required': 'Please let us know what to call you!'
+        #     }
+        # }
+
         labels = {
             'nombre': '',
             'aPaterno': '',
@@ -150,6 +156,17 @@ class UserLoginForm(forms.Form):
         return self.cleaned_data
 
 class UserUpdatePasswordForm(forms.Form):
+
+        telefono = forms.CharField(
+            label = '',
+            required=True,
+            widget=forms.TextInput(
+                attrs={
+                    'placeholder' : 'Teléfono',
+                }
+            )
+        )
+
         password1 = forms.CharField(
             label = '',
             required=True,
@@ -160,7 +177,7 @@ class UserUpdatePasswordForm(forms.Form):
                 }
             )
         )
-        password2 = forms.CharField(
+        new_password = forms.CharField(
             label = '',
             required=True,
             widget=forms.PasswordInput(
@@ -170,5 +187,26 @@ class UserUpdatePasswordForm(forms.Form):
                 }
             )
         )
+
+        confirm_new_pass = forms.CharField(
+            required=True,
+            widget=forms.PasswordInput(
+                attrs={'placeholder': 'Confirmar Nueva Contraseña'}
+            )
+        )
+
+        def clean(self):
+            cleaned_data = super(UserUpdatePasswordForm, self).clean()
+            telefono = self.cleaned_data['telefono']
+            password1 = self.cleaned_data['password1']
+
+            if not authenticate(telefono = telefono, password = password1):
+                raise forms.ValidationError('Los datos del usuario no son correctos')
+            
+            return self.cleaned_data
+
+        def clean_confirm_new_pass(self):
+            if self.cleaned_data['new_password'] != self.cleaned_data['confirm_new_pass']:
+                self.add_error('confirm_new_pass', 'Las contraseñas no coinciden')
 
 

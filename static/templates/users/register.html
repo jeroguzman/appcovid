@@ -38,6 +38,7 @@
                     <ul class="change-list">
                         <li class="item-content item-input">
                             <div class="item-col">
+                                {{form.errors.nombre}}
                                 <div class="item-input-wrap">
                                     {{form.nombre}}
                                     <div class="item-input-icon"><img src="{% static 'img/pwa/user-icon.svg'%}" alt=""></div>
@@ -46,6 +47,7 @@
                         </li>
                         <li class="item-content item-input">
                             <div class="item-col">
+                                {{form.errors.aPaterno}}
                                 <div class="item-input-wrap">
                                     {{form.aPaterno}}
                                     <div class="item-input-icon"><img src="{% static 'img/pwa/user-icon.svg'%}" alt=""></div>
@@ -54,6 +56,7 @@
                         </li>
                         <li class="item-content item-input">
                             <div class="item-col">
+                                {{form.errors.aMaterno}}
                                 <div class="item-input-wrap">
                                     {{form.aMaterno}}
                                     <div class="item-input-icon"><img src="{% static 'img/pwa/user-icon.svg'%}" alt=""></div>
@@ -62,6 +65,7 @@
                         </li>
                         <li class="item-content item-input">
                             <div class="item-col">
+                                {{form.errors.edad}}
                                 <div class="item-input-wrap">
                                     {{form.edad}}
                                     <div class="item-input-icon"><img src="{% static 'img/pwa/user-icon.svg'%}" alt=""></div>
@@ -70,29 +74,34 @@
                         </li>
                         <li class="item-content item-input">
                             <div class="item-col">
+                                {{form.errors.sexo}}
                                 <div class="item-input-wrap">
                                     {{form.sexo}}
+                                    <div class="item-input-icon"><i class="fas fa-venus-mars"></i></div>
                                 </div>
                             </div>
                         </li>
                         <li class="item-content item-input">
                             <div class="item-col">
+                                {{form.errors.direccion}}
                                 <div class="item-input-wrap">
                                     {{form.direccion}}
-                                    <div class="item-input-icon"><img src="{% static 'img/pwa/user-icon.svg'%}" alt=""></div>
+                                    <div class="item-input-icon"><i class="fas fa-map-marker-alt"></i></div>
                                 </div>
                             </div>
                         </li>
                         <li class="item-content item-input">
                             <div class="item-col">
+                                {{form.errors.cp}}
                                 <div class="item-input-wrap">
                                     {{form.cp}}
-                                    <div class="item-input-icon"><img src="{% static 'img/pwa/user-icon.svg'%}" alt=""></div>
+                                    <div class="item-input-icon"><i class="fas fa-map-marker-alt"></i></div>
                                 </div>
                             </div>
                         </li>
                         <li class="item-content item-input">
                             <div class="item-col">
+                                {{form.errors.telefono}}
                                 <div class="item-input-wrap">
                                     {{form.telefono}}
                                     <div class="item-input-icon"><img src="{% static 'img/pwa/smartphone.svg'%}" alt=""></div>
@@ -101,14 +110,16 @@
                         </li>
                         <li class="item-content item-input">
                             <div class="item-col">
+                                {{form.errors.correo}}
                                 <div class="item-input-wrap">
                                     {{form.correo}}
-                                    <div class="item-input-icon"><img src="{% static 'img/pwa/smartphone.svg'%}" alt=""></div>
+                                    <div class="item-input-icon"><img src="{% static 'img/pwa/email.svg'%}" alt=""></div>
                                 </div>
                             </div>
                         </li>
                         <li class="item-content item-input">
                             <div class="item-col">
+                                {{form.errors.password1}}
                                 <div class="item-input-wrap">
                                     {{form.password1}}
                                     <div class="item-input-icon"><img src="{% static 'img/pwa/lock-icon.svg'%}" alt=""></div>
@@ -127,6 +138,7 @@
                             <div class="list acceptence-col">
                                 <ul>
                                     <li>
+                                        {{form.errors.avisoPrivacidad}}
                                         <label class="item-checkbox item-content">
                                             {{form.avisoPrivacidad}}
                                             <i class="icon icon-checkbox"></i>

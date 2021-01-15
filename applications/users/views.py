@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import AnonymousUser
 from django.http import HttpResponseRedirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import(
     View
 )
@@ -60,10 +62,11 @@ class UserLogoutView(View):
             )
         )
 
-class UserUpdatePasswordView(FormView):
+class UserUpdatePasswordView(LoginRequiredMixin, FormView):
     template_name = 'users/update-password.html'
     form_class = UserUpdatePasswordForm
     success_url = reverse_lazy('users_app:user-login')
+    login_url = reverse_lazy('users_app:user-login')
 
     def form_valid(self, form):
         usuario = self.request.user
@@ -72,7 +75,7 @@ class UserUpdatePasswordView(FormView):
             password = form.cleaned_data['password1']
         )
         if user:
-            new_password = form.cleaned_data['password2']
+            new_password = form.cleaned_data['new_password']
             usuario.set_password(new_password)
             usuario.save()
 
