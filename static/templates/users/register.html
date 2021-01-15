@@ -18,9 +18,9 @@
 
 	<div class="page-content change-password-col register-col">
 		<div class="list no-hairlines custom-form">
-            <div class="back-btn"><a href="index.html" class="back link">
+            <!--<div class="back-btn"><a href="index.html" class="back link">
                 <img src="{% static 'img/pwa/left-arrow-big-black.svg'%}" alt=""></a>
-            </div>
+            </div>-->
             <div class="register-icon">
                 <img src="{% static 'img/pwa/register-top-img.png'%}" alt="">
             </div>
@@ -31,9 +31,6 @@
                 <div class="top-title">
                     <div>
                         <h3>Registro</h3>
-                    </div>
-                    <div>
-                        <a href="register.html">Not a Doctor?</a>
                     </div>
                 </div>
                 <form action="" method="POST">
@@ -148,7 +145,7 @@
                         </li>
                     </ul>
                 </form>
-				<span class="login-back">Already have an account ? <a href="login.html">Login Now!</a></span>
+				<span class="login-back">¿Ya tienes una cuenta? <a href='{% url "users_app:user-login" %}'>Inicia sesion</a></span>
                 <div class="bottom-social-btn">
                     <ul>
                         <li><a href="#" class="facebook"><span><img src="{% static 'img/pwa/facebook-letter.svg'%}" alt="facebook"></span>Facebook</a></li>

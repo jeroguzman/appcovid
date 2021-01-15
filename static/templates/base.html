@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, minimal-ui, viewport-fit=cover">
@@ -24,7 +24,7 @@
 
     
     <!-- Add link rel manifest -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href='{% static "manifest.json" %}'>
     
     <!-- Add iOS meta tags and icons -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -42,7 +42,7 @@
     <link rel="icon" href='{% static "img/favicon.png" %}' type="image/x-icon"  />
     
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href='{% static "css/pwa/bootstrap.min.css"}'>
+    <link rel="stylesheet" href='{% static "css/pwa/bootstrap.min.css" %}'>
     
     <!-- Fontawesome CSS -->
     <link rel="stylesheet" href='{% static "plugins/fontawesome/css/fontawesome.min.css" %}'>
@@ -87,7 +87,7 @@
     <script src='{% static "js/pwa/install.js" %}'></script>
 
     <!-- Custom JS -->
-    <script src='{% static "js/pwa/script.js" %}'></script>
+    <script src='{% static "script.js" %}'></script>
         
     
 </body>

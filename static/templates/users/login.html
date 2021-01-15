@@ -17,9 +17,9 @@
 
     <div class="page-content change-password-col register-col">
         <div class="list no-hairlines custom-form">
-            <div class="back-btn"><a href="index.html" class="back link">
+            <!--<div class="back-btn"><a href="index.html" class="back link">
                 <img src="{% static 'img/pwa/left-arrow-big-black.svg'%}" alt=""></a>
-            </div>
+            </div>-->
             <div class="register-icon">
                 <img src="{% static 'img/pwa/register-top-img.png'%}" alt="">
             </div>
@@ -31,9 +31,7 @@
                     <div>
                         <h3>Iniciar Sesión</h3>
                     </div>
-                    <div>
-                        <a href="register.html">Are you Doctor?</a>
-                    </div>
+                    
                 </div>
 
                 <form action="" method="POST">
@@ -58,7 +56,7 @@
                         <li class="col-50 save-password">
                         </li>
                         <li class="col-50 forgot-password">
-                            <a href="forgot-password.html">Forgot Password ?</a>
+                            <a href="forgot-password.html">¿Olvidaste tu contraseña?</a>
                         </li>
                         <li class="item-content item-input">
                             <div class="item-input-wrap submit-btn-col">
@@ -68,7 +66,7 @@
                     </ul>
 
                 </form>                
-                <span class="login-back">Don't have an login ? <a href="register.html">Signup Now!</a></span>
+                <span class="login-back">¿No tienes una cuenta? <a href="{% url 'users_app:user-register' %}">¡Registrate!</a></span>
                 <div class="bottom-social-btn">
                     <ul>
                         <li><a href="#" class="facebook"><span><img src="{% static 'img/pwa/facebook-letter.svg'%}" alt="facebook"></span>Facebook</a></li>

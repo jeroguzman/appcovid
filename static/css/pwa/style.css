@@ -3992,7 +3992,7 @@ i.icon.icon-forward::before, i.icon.icon-next::before {
 	content: "";
 	width: 20px;
 	height: 20px;
-	background-image: url(../../assets/images/price-check.svg);
+	background-image: url(../../img/pwa/price-check.svg);
 	border-color: #0DD8F9;
 	background-color: #fff;
 	position: relative;
