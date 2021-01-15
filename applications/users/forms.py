@@ -46,18 +46,21 @@ class UserRegisterForm(forms.ModelForm):
                 attrs={
                     'placeholder' : 'Nombre',
                     'class': 'form-control',
+                    'onkeydown' : 'return alphaOnly(event);',
                 }
             ),
             'aPaterno': forms.TextInput(
                 attrs={
                     'placeholder' : 'Apellido Paterno',
                     'class': 'form-control',
+                    'onkeydown' : 'return alphaOnly(event);',
                 }
             ),
             'aMaterno': forms.TextInput(
                 attrs={
                     'placeholder' : 'Apellido Materno',
                     'class': 'form-control',
+                    'onkeydown' : 'return alphaOnly(event);',
                 }
             ),
             'edad': forms.NumberInput(
@@ -84,7 +87,7 @@ class UserRegisterForm(forms.ModelForm):
                     'class': 'form-control',
                 }
             ),
-            'telefono': forms.NumberInput(
+            'telefono': forms.TextInput(
                 attrs={
                     'placeholder' : 'Teléfono',
                     'class': 'form-control',
@@ -102,12 +105,6 @@ class UserRegisterForm(forms.ModelForm):
                 }
             ),
         }
-
-        # error_messages = {
-        #     'nombre' : {
-        #         'required': 'Please let us know what to call you!'
-        #     }
-        # }
 
         labels = {
             'nombre': '',

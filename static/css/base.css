@@ -4,7 +4,7 @@ body{
     padding: 0;
 }
 
-.errorlist, .error{
+.errorlist{
     color: red;
 }
 
