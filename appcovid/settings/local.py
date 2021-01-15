@@ -3,7 +3,7 @@ from .base import *
 # False if not in os.environ
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', '178.128.76.91']
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', '178.128.76.91', '192.168.1.173']
 
 
 # Static files (CSS, JavaScript, Images)

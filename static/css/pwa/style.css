@@ -806,7 +806,7 @@ body.overlay-body:before {
 	padding: 10px;
 }
 .appointment-col .btn {
-	background-color: #0DD8F9;
+	background-color: #8C2D2E;
 	border-radius: 5px;
 	font-size: 14px;
 	color: #fff;
@@ -2328,7 +2328,7 @@ body.overlay-body:before {
 }
 .tab-col ul li a.active {
 	border-radius: 50px; 
-	background-color: #0DD8F9;
+	background-color: #8C2D2E;
 	color: #fff;
 }
 .book-appointment-btn {
@@ -2505,7 +2505,7 @@ body.overlay-body:before {
 .clinic-content .clinic-direction a {
 	display: inline-block;
 	margin-top: 4px;
-	color: #0DD8F9;
+	color: #8C2D2E;
 }
 .clinic-content .clinic-details {
 	border-bottom: 1px dashed #c5c5c5;
@@ -3054,7 +3054,7 @@ table.inv-table tr td, table tr th {
 }
 .pat-info-right .view-btn .btn {
 	display: inline-block;
-	background-color: #0DD8F9;
+	background-color: #8C2D2E;
 	border-radius: 50px;
 	font-size: 10px;
 	color: #fff;
@@ -3945,7 +3945,7 @@ i.icon.icon-forward::before, i.icon.icon-next::before {
     white-space: inherit;
 }
 .acceptence-col ul li .item-title a {
-	color: #0DD8F9;
+	color: #8C2D2E;
 }
 .setting-widget.padding-less {
 	padding-top: 10px;
@@ -3993,7 +3993,7 @@ i.icon.icon-forward::before, i.icon.icon-next::before {
 	width: 20px;
 	height: 20px;
 	background-image: url(../../img/pwa/price-check.svg);
-	border-color: #0DD8F9;
+	border-color: #8C2D2E;
 	background-color: #fff;
 	position: relative;
 	left: -1px;
@@ -4046,7 +4046,7 @@ form#data1 .add-btn {
 #profileCard1 li {
 	margin:5px 0;
 	font-size: 11px;
-	background-color: #0DD8F9;
+	background-color: #8C2D2E;
 	border-radius: 50px;
 	color: #fff;
 	display: inline-block;
@@ -5047,7 +5047,7 @@ ul li span.trash-icon {
     -webkit-justify-content: center;
 }
 .setting-widget .custom-control-input:checked ~ .custom-control-label::before {
-	background-color: #0DD8F9;
+	background-color: #8C2D2E;
 	color: #fff;
 }
 .custom-control.custom-checkbox {
@@ -5328,7 +5328,7 @@ ul li span.trash-icon {
 }
 .accordion-schedule .accordion-item-content ul li a {
 	font-size: 13px;
-	border:1px solid #0DD8F9;
+	border:1px solid #8C2D2E;
 	background-color: #fff;
 	padding: 12px 5px;
 	text-align: center;
@@ -5338,7 +5338,7 @@ ul li span.trash-icon {
 	color: #000;
 }
 .accordion-schedule .accordion-item-content ul li a:hover {
-	background-color: #0DD8F9;
+	background-color: #8C2D2E;
 	color: #fff;
 }
 .custom-modal .close {
@@ -5685,7 +5685,7 @@ ul li span.trash-icon {
 .btn-submit {
 	border: 0;
 	border-radius: 50px;
-	background-color: #1B5A90;
+	background-color: #8C2D2E;
 	display: inline-block;
 	color: #fff !important;
 	text-transform: uppercase;
@@ -5694,7 +5694,7 @@ ul li span.trash-icon {
 	width: 100%;
 }
 .btn-submit:hover {
-	background-color: #174F80;
+	background-color: #2D2C2C;
 }
 .change-password-col .back-btn{
 	position: absolute;
@@ -5746,7 +5746,7 @@ ul li span.trash-icon {
 	height: 35px;
 	margin: 0 auto;
 	border-radius: 50px;
-	background-color: #0DD8F9;
+	background-color: #8C2D2E;
 	color: #fff;
 	display: flex;
 	display: -webkit-flex;
@@ -5823,7 +5823,7 @@ ul li span.trash-icon {
 }
 .timing-col .timing-box .inner-timing-box:hover,
 .timing-col .timing-box .inner-timing-box.active {
-	background-color: #0DD8F9;
+	background-color: #8C2D2E;
 	color: #fff;
 }
 .timing-col .timing-box .inner-timing-box:hover .title-col span.time-icon,
@@ -5889,7 +5889,7 @@ ul li span.trash-icon {
 	margin-top: 35px;
 }
 .booking-middle-inner .view-btn-col .btn {
-	background-color: #0DD8F9;
+	background-color: #8C2D2E;
 	color: #fff;
 	padding: 10px 15px;
 	border-radius: 50px;
