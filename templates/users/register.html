@@ -8,12 +8,172 @@
 
 <!-- Titulo -->
 {% block title %}
-    Login
+    Registrar
 {% endblock title %}
     
 <!-- Cuerpo -->
 {% block body %}
-<div id="header-register" class="py-3">
+
+<div class="main-wrapper">
+
+	<div class="page-content change-password-col register-col">
+		<div class="list no-hairlines custom-form">
+            <div class="back-btn"><a href="index.html" class="back link">
+                <img src="{% static 'img/pwa/left-arrow-big-black.svg'%}" alt=""></a>
+            </div>
+            <div class="register-icon">
+                <img src="{% static 'img/pwa/register-top-img.png'%}" alt="">
+            </div>
+			<div class="logo">
+				<a href="index.html"><img src="{% static 'img/pwa/logo.svg'%}" alt="doccure"></a>
+			</div>
+            <div class="register-inner-col">
+                <div class="top-title">
+                    <div>
+                        <h3>Registro</h3>
+                    </div>
+                    <div>
+                        <a href="register.html">Not a Doctor?</a>
+                    </div>
+                </div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <ul class="change-list">
+                        <li class="item-content item-input">
+                            <div class="item-col">
+                                <div class="item-input-wrap">
+                                    {{form.nombre}}
+                                    <div class="item-input-icon"><img src="{% static 'img/pwa/user-icon.svg'%}" alt=""></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-col">
+                                <div class="item-input-wrap">
+                                    {{form.aPaterno}}
+                                    <div class="item-input-icon"><img src="{% static 'img/pwa/user-icon.svg'%}" alt=""></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-col">
+                                <div class="item-input-wrap">
+                                    {{form.aMaterno}}
+                                    <div class="item-input-icon"><img src="{% static 'img/pwa/user-icon.svg'%}" alt=""></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-col">
+                                <div class="item-input-wrap">
+                                    {{form.edad}}
+                                    <div class="item-input-icon"><img src="{% static 'img/pwa/user-icon.svg'%}" alt=""></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-col">
+                                <div class="item-input-wrap">
+                                    {{form.sexo}}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-col">
+                                <div class="item-input-wrap">
+                                    {{form.direccion}}
+                                    <div class="item-input-icon"><img src="{% static 'img/pwa/user-icon.svg'%}" alt=""></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-col">
+                                <div class="item-input-wrap">
+                                    {{form.cp}}
+                                    <div class="item-input-icon"><img src="{% static 'img/pwa/user-icon.svg'%}" alt=""></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-col">
+                                <div class="item-input-wrap">
+                                    {{form.telefono}}
+                                    <div class="item-input-icon"><img src="{% static 'img/pwa/smartphone.svg'%}" alt=""></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-col">
+                                <div class="item-input-wrap">
+                                    {{form.correo}}
+                                    <div class="item-input-icon"><img src="{% static 'img/pwa/smartphone.svg'%}" alt=""></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-col">
+                                <div class="item-input-wrap">
+                                    {{form.password1}}
+                                    <div class="item-input-icon"><img src="{% static 'img/pwa/lock-icon.svg'%}" alt=""></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-col">
+                                <div class="item-input-wrap">
+                                    {{form.password2}}
+                                    <div class="item-input-icon"><img src="{% static 'img/pwa/lock-icon.svg'%}" alt=""></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list acceptence-col">
+                                <ul>
+                                    <li>
+                                        <label class="item-checkbox item-content">
+                                            {{form.avisoPrivacidad}}
+                                            <i class="icon icon-checkbox"></i>
+                                            <div class="item-col">
+                                              <div class="item-title">He leido y acepto los <a href="#">Terminos y Condiciones</a></div>
+                                            </div>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-input-wrap submit-btn-col">
+                                <button type="submit" class="btn btn-submit">Registrar</button>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+				<span class="login-back">Already have an account ? <a href="login.html">Login Now!</a></span>
+                <div class="bottom-social-btn">
+                    <ul>
+                        <li><a href="#" class="facebook"><span><img src="{% static 'img/pwa/facebook-letter.svg'%}" alt="facebook"></span>Facebook</a></li>
+                        <li><a href="#" class="google"><span><img src="{% static 'img/pwa/google-plus-letter.svg'%}" alt="googleplus"></span>Google</a></li>
+                    </ul>
+                </div>
+            </div>
+		</div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div id="header-register" class="py-3">
     <h2 class="text-center">Registro</h2>
 
 </div>
@@ -27,5 +187,5 @@
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
 
-</div>
+</div> -->
 {% endblock body %}

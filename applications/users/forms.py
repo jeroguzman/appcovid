@@ -78,7 +78,7 @@ class UserRegisterForm(forms.ModelForm):
                     'class': 'form-control',
                 }
             ),
-            'cp': forms.NumberInput(
+            'cp': forms.TextInput(
                 attrs={
                     'placeholder' : 'Código Postal',
                     'class': 'form-control',
@@ -123,10 +123,9 @@ class UserLoginForm(forms.Form):
     telefono = forms.CharField(
         label = '',
         required=True,
-        widget=forms.NumberInput(
+        widget=forms.TextInput(
             attrs={
-                'placeholder' : 'Telefono',
-                'class' : 'form-control',
+                'placeholder' : 'Teléfono',
             }
         )
     )
@@ -136,7 +135,6 @@ class UserLoginForm(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 'placeholder' : 'Contraseña',
-                'class' : 'form-control',
             }
         )
     )

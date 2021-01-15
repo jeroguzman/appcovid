@@ -3,29 +3,81 @@
 
 <!-- Estilos adicionales -->
 {% block estilos-adicionales %}
-<link rel="stylesheet" href="{% static 'css/users/register.css'%}">
+<!-- <link rel="stylesheet" href="{% static 'css/users/register.css'%}"> -->
 {% endblock estilos-adicionales %}
 
 <!-- Titulo -->
 {% block title %}
-    Login
+    Iniciar Sesión
 {% endblock title %}
     
 <!-- Cuerpo -->
 {% block body %}
-<div id="header-register" class="py-3">
-    <h2 class="text-center">Iniciar Sesión</h2>
+<div class="main-wrapper">
 
-</div>
+    <div class="page-content change-password-col register-col">
+        <div class="list no-hairlines custom-form">
+            <div class="back-btn"><a href="index.html" class="back link">
+                <img src="{% static 'img/pwa/left-arrow-big-black.svg'%}" alt=""></a>
+            </div>
+            <div class="register-icon">
+                <img src="{% static 'img/pwa/register-top-img.png'%}" alt="">
+            </div>
+            <div class="logo">
+                <a href="index.html"><img src="{% static 'img/pwa/logo.svg'%}" alt="doccure"></a>
+            </div>
+            <div class="register-inner-col">
+                <div class="top-title">
+                    <div>
+                        <h3>Iniciar Sesión</h3>
+                    </div>
+                    <div>
+                        <a href="register.html">Are you Doctor?</a>
+                    </div>
+                </div>
 
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <ul class="change-list">
+                        <li class="item-content item-input">
+                            <div class="item-col">
+                                <div class="item-input-wrap">
+                                    {{form.telefono}}
+                                    <div class="item-input-icon"><img src="{% static 'img/pwa/email.svg'%}" alt=""></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-col">
+                                <div class="item-input-wrap">
+                                    {{form.password1}}
+                                    <div class="item-input-icon"><img src="{% static 'img/pwa/lock-icon.svg'%}" alt=""></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col-50 save-password">
+                        </li>
+                        <li class="col-50 forgot-password">
+                            <a href="forgot-password.html">Forgot Password ?</a>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-input-wrap submit-btn-col">
+                                <button type="submit" class="btn btn-submit">Iniciar Sesión</button>
+                            </div>
+                        </li>
+                    </ul>
 
-<div class="container-fluid">
-
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-    </form>
+                </form>                
+                <span class="login-back">Don't have an login ? <a href="register.html">Signup Now!</a></span>
+                <div class="bottom-social-btn">
+                    <ul>
+                        <li><a href="#" class="facebook"><span><img src="{% static 'img/pwa/facebook-letter.svg'%}" alt="facebook"></span>Facebook</a></li>
+                        <li><a href="#" class="google"><span><img src="{% static 'img/pwa/google-plus-letter.svg'%}" alt="googleplus"></span>Google</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 {% endblock body %}
