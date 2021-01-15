@@ -35,20 +35,11 @@
                 </div>
 
                 <form action="" method="POST">
-                    {% csrf_token %}
-
-                    
-                    {% for field, errors in form.errors.items  %}
-                        {% for error in errors  %}
-                            {{error}}
-                        {% endfor %}
-                    {% endfor %}
-                        
-                        
+                    {% csrf_token %}    
                     <ul class="change-list">
                         <li class="item-content item-input">
                             <div class="item-col">
-                                {{form.errors.telefono}}
+                                {{form.non_field_errors}}
                                 <div class="item-input-wrap">
                                     {{form.telefono}}
                                     <div class="item-input-icon"><img src="{% static 'img/pwa/email.svg'%}" alt=""></div>

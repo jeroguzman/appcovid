@@ -4,11 +4,8 @@ body{
     padding: 0;
 }
 
-input[name="csrfmiddlewaretoken"]{
+.errorlist, .error{
     color: red;
 }
 
-.errorlist{
-    color: red;
-}
 

@@ -207,6 +207,6 @@ class UserUpdatePasswordForm(forms.Form):
 
         def clean_confirm_new_pass(self):
             if self.cleaned_data['new_password'] != self.cleaned_data['confirm_new_pass']:
-                self.add_error('confirm_new_pass', 'Las contraseñas no coinciden')
+                self.add_error('confirm_new_pass', 'Las contraseñas actualizadas no coinciden')
 
 
