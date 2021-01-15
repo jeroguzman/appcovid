@@ -171,7 +171,7 @@ self.addEventListener('activate', (evt) => {
 self.addEventListener('fetch', (evt) => {
   console.log('[ServiceWorker] Fetch', evt.request.url);
   // Add fetch event handler here.
-  if (evt.request.url.includes('forecast/')) {
+  if (evt.request.url.includes('/')) {
   console.log('[Service Worker] Fetch (data)', evt.request.url);
   evt.respondWith(
       caches.open(DATA_CACHE_NAME).then((cache) => {
