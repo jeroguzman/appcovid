@@ -8,15 +8,111 @@
 
 <!-- Titulo -->
 {% block title %}
-    
+    Inicio
 {% endblock title %}
     
 <!-- Cuerpo -->
 {% block body %}
-<div id="header-register" class="py-3">
-    <h2 class="text-center">Home View</h2>
-    <h4>Bienvenido {{user.nombre}} {{user.aPaterno}}</h4>
-    <a href="{% url 'users_app:user-logout' %}">Cerrar sesión</a>
-    <a href="{% url 'users_app:user-update-password' %}">Cambiar contraseña</a>
+
+<div class="main-wrapper">
+
+    <div class="side-menu" id="sidebar-menu">
+        <div class="close-btn"><span class="material-icons">close</span></div>
+        <ul>
+            <li>
+                <a class="" href="#">
+                    <span class="material-icons">dashboard</span>
+                    Inicio
+                </a>
+            </li>
+            <li>
+                <a class="" href="#">
+                    <span class="material-icons">date_range</span>
+                    Recetas
+                </a>
+            </li>
+            <li>
+                <a class="" href="{% url 'users_app:user-update-password' %}">
+                    <span class="material-icons">lock_open</span>
+                    Cambiar Contraseña
+                </a>
+            </li>
+        </ul>
+        <a class="sidebar-logout" href="{% url 'users_app:user-logout' %}"><span><img src='{% static "/img/pwa/open-account-logout.svg" %}' alt=""></span>Cerrar Sesión</a>
+    </div>
+
+    <div class="navbar two-action no-hairline">
+        <div class="navbar-inner d-flex align-items-center">
+            <div class="left">
+                <a href="#" class="link icon-only">
+                    <i class="custom-hamburger">
+                        <span><b></b></span>
+                    </i>
+                </a>
+            </div>
+            <div class="sliding custom-title">Inicio</div>
+            <div class="right d-flex">
+                <a href="#" class="link icon-only"><i class="material-icons">notifications</i></a>
+                <a href="#" data-toggle="dropdown" aria-expanded="true" class="link"><i class="material-icons">more_vert</i></a>
+                <div class="dropdown-menu dropdown-menu-right header_drop_icon">
+                    <a href="#" class="dropdown-item">Mi Perfil</a>
+                    <a href="#" class="dropdown-item">Ajustes</a>
+                    <a href="{% url 'users_app:user-logout' %}" class="dropdown-item">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content header-bg pt-0">
+        <div class="container">
+
+            <div class="doctor-widget doctor-dashboard">
+                <div class="doc-info-left">
+                    <div class="doctor-img">
+                            <img src='{% static "img/pwa/logo-nogales-16.png" %}' class="img-fluid" alt="User Image">
+                    </div>
+                    <div class="doc-info-cont">
+                        <!--<div class="toggle-icon-doctor">
+                            <div class="inner-toggle-icon">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </div>
+                        </div>-->
+                        <h4 class="doc-name">Bienvenido {{user.nombre}} {{user.aPaterno}}</h4>
+                        <p class="doc-speciality"></p>
+                        
+                            <div class="doc-location">
+                                <p> ¿En que te podemos ayudar hoy?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="patient-details">
+                <div class="inner-patient-detaials">
+                    <div class="patient-col">
+                        <img src='{% static "/img/pwa/imagenvideo.jpg" %}'>
+                    </div>
+                    
+                    <div class="patient-col">
+                        <img src='{% static "/img/pwa/saludyb.png" %}'>
+                    </div>
+                </div>
+            </div>
+
+            <div class="appointments-details">
+                <div class="inner-appointment">
+                    <div class="appointment-col">
+                        <a href="#" class="btn">Consultorios Videollamada</a>
+                    </div>
+                    <div class="appointment-col">
+                        <a href="#" class="btn">Salud y Bienestar</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
 </div>
 {% endblock body %}

@@ -431,7 +431,7 @@ body.overlay-body:before {
 }
 .sidebar-logout {
 	display: inline-block;
-	background-color: #DA3F81;
+	background-color: #BF1616;
 	border-radius: 50px;
 	padding: 7px 22px;
 	color: #fff;
@@ -484,7 +484,7 @@ body.overlay-body:before {
 	opacity: 0;
 }
 .navbar-inner {
-	background: #1B5A90;
+	background: #8C2D2E;
 	width: 100%;
 	padding: 15px;
 }
@@ -816,7 +816,7 @@ body.overlay-body:before {
 	padding: 15px 15px;
 }
 .appointment-col .btn:hover{
-	background-color: #0BC7E6;
+	background-color: #2D2C2C;
 }
 .booking-summary {
 	padding: 15px 0;
@@ -3589,7 +3589,7 @@ i.icon.icon-forward::before, i.icon.icon-next::before {
     content: "";
     display: block;
     height: 75px;
-    background: #1B5A90;
+    background: #8C2D2E;
 }
 .header-bg > div.block {
 	margin-top: 1px !important;
@@ -5549,7 +5549,7 @@ ul li span.trash-icon {
 	background-color: #F6F6F6 !important;
 }
 .pages-list-col .list ul li .item-avatar span.material-icons {
-	background-color: #1B5A90;
+	background-color: #8C2D2E;
 	width: 30px;
 	height: 30px;
 	border-radius: 50px;
