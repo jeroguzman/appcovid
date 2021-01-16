@@ -6,7 +6,6 @@ cp.mask('00000');
 
 function alphaOnly(event) {
     var key = event.keyCode;
-    console.log(key)
     return (key == 8 //Backspace
         || (key >= 65 && key <= 90) //Letters
         || key == 9 //Tab

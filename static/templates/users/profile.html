@@ -1,0 +1,585 @@
+{% extends '../base.html' %}
+{% load static %}
+{% load humanize %}
+
+<!-- Estilos adicionales -->
+{% block estilos-adicionales %}
+<!-- <link rel="stylesheet" href="{% static 'css/users/register.css'%}"> -->
+{% endblock estilos-adicionales %}
+
+<!-- Titulo -->
+{% block title %}
+    Perfil de {{user.nombre}}
+{% endblock title %}
+    
+<!-- Cuerpo -->
+{% block body %}
+
+<div class="main-wrapper">
+
+    <div class="side-menu" id="sidebar-menu">
+        <div class="close-btn"><span class="material-icons">close</span></div>
+        <ul>
+            <li>
+                <a class="" href="{% url 'home_app:home' %}">
+                    <span class="material-icons">dashboard</span>
+                    Inicio
+                </a>
+            </li>
+            <li>
+                <a class="" href="profile-settings.html">
+                    <span class="material-icons">settings</span>
+                    Editar Perfil
+                </a>
+            </li>
+            <li>
+                <a class="" href="{% url 'users_app:user-update-password' %}">
+                    <span class="material-icons">lock_open</span>
+                    Cambiar Contraseña
+                </a>
+            </li>
+        </ul>
+        <a class="sidebar-logout" href="{% url 'users_app:user-logout' %}"><span><img src="{% static 'img/pwa/open-account-logout.svg' %}" alt=""></span>Cerrar Sesión</a>
+    </div>
+
+    <div class="navbar two-action no-hairline">
+        <div class="navbar-inner d-flex align-items-center">
+            <div class="left">
+                <a href="#" class="link icon-only">
+                    <i class="custom-hamburger">
+                        <span><b></b></span>
+                    </i>
+                </a>
+            </div>
+            <div class="sliding custom-title">Perfil de {{user.nombre | title}}</div>
+            <div class="right d-flex">
+                <a href="notifications.html" class="link icon-only"><i class="material-icons">notifications</i></a>
+                <a href="#" data-toggle="dropdown" aria-expanded="true" class="link"><i class="material-icons">more_vert</i></a>
+                <div class="dropdown-menu dropdown-menu-right header_drop_icon">
+                    <a href="{% url 'users_app:user-profile' %}" class="dropdown-item">Mi Perfil</a>
+                    <a href="profile-settings.html" class="dropdown-item">Editar Perfil</a>
+                    <a href="{% url 'users_app:user-logout' %}" class="dropdown-item">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content pt-0">
+
+        <!-- Doctor Profile -->
+        <div class="doctor-profile-tab pb-0">
+            <div class="container">
+                 <div class="tab-col">
+                     <ul class="nav nav-tabs">
+                        <li><a href="#OverView" data-toggle="tab" class="active">OverView</a></li>  
+                        <!-- <li><a href="#Appointments" data-toggle="tab">Citas</a></li>
+                        <li><a href="#prescriptions" data-toggle="tab">Recetas</a></li>
+                        <li><a href="#medical-records" data-toggle="tab">Medical Records</a></li> -->
+                      </ul>
+                  </div>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="OverView">
+                        <div class="panel panel-default">
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                  <div class="panel-body">
+                                      <div class="tab-widget">
+                                          <div class="left-icon-col">
+                                              <span><img src="{% static 'img/pwa/i-icon.svg' %}" alt="i"></span>
+                                          </div>
+                                          
+                                        <div class="right-content-col">
+                                            <div class="doctor-widget">
+                                                <div class="doc-info-left">
+                                                    <div class="doctor-img">
+                                                        <a href="patient-profile.html" class="doctor-img-profile">
+                                                            <img src="{% static 'img/pwa/patients/patient4.jpg' %}" class="img-fluid img-circle" alt="User Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="doc-info-cont">
+                                                        <h4 class="doc-name mb-2"><a href="patient-profile.html">{{user}}</a></h4>
+                                                        <div class="patient-details-col">
+                                                            <span>Patient ID - {{user.id}}</span>
+                                                        </div>
+                                                        <div class="patient-details-col mt-1"> 
+                                                            <span>Edad - {{user.edad}}</span>
+                                                        </div>
+                                                        <div class="patient-details-col mt-1"> 
+                                                            <span>Sexo - {{user.sexo}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="doc-info-right mt-3">
+                                                    <div class="doc-info">
+                                                        <div class="doc-location">
+                                                            <p><i class="fas fa-phone"></i> {{user.telefono}}</p>
+                                                        </div>
+                                                        <div class="doc-location">
+                                                            <p><i class="fas fa-envelope"></i> {{user.correo}}</p>
+                                                        </div>
+                                                        <div class="doc-location">
+                                                            <p><i class="fas fa-map-marker-alt"></i> {{user.direccion}} {{user.cp}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="tab-pane" id="Appointments">
+                          <div class="panel panel-default">
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                  <div class="panel-body">
+                                    <div class="patient-appointments-col">	
+                                        <div class="patient-widget">		
+                                            <div class="patient-top-details">
+                                                <div>
+                                                    <span class="invoice-id">Booking Date - 16 Mar 2020</span>
+                                                </div>
+                                                <div>
+                                                    <span class="date-col">Dental</span>
+                                                </div>
+                                            </div>	
+                                            <div class="invoice-widget">
+                                                <div class="pat-info-left">
+                                                    <div class="patient-img">
+                                                        <a href="doctor-profile.html">
+                                                            <img src="img/pwa/doctors/doctor-thumb-01.jpg" class="img-fluid" alt="User Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="pat-info-cont">
+                                                        <h4 class="pat-name"><a href="doctor-profile.html">Dr. Ruby Perrin</a></h4>
+                                                        <div class="patient-details-col">
+                                                            <span class="">Appt Date - 22 Mar 2020 , 4:30 PM</span>
+                                                        </div>
+                                                        <div class="hour-col">
+                                                            <div>
+                                                                <span class="hours">$150</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="status-col">
+                                                <div class="status-btn">
+                                                    <a href="#" class="btn success"><i><img src="img/pwa/icon-checkmark.svg" alt=""></i>Confirm</a>
+                                                </div>
+                                                <div class="status-btn">
+                                                    <a href="#" class="btn view-eye"><i><img src="img/pwa/icon-awesome-eye.svg" alt=""></i>View</a>
+                                                </div>
+                                                <div class="status-btn">
+                                                    <a href="#" class="btn print"><i><img src="img/pwa/icon-metro-printer.svg" alt=""></i>Print</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="patient-widget">		
+                                            <div class="patient-top-details">
+                                                <div>
+                                                    <span class="invoice-id">Booking Date - 16 Mar 2020</span>
+                                                </div>
+                                                <div>
+                                                    <span class="date-col">Dental</span>
+                                                </div>
+                                            </div>	
+                                            <div class="invoice-widget">
+                                                <div class="pat-info-left">
+                                                    <div class="patient-img">
+                                                        <a href="doctor-profile.html">
+                                                            <img src="img/pwa/doctors/doctor-thumb-02.jpg" class="img-fluid" alt="User Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="pat-info-cont">
+                                                        <h4 class="pat-name"><a href="doctor-profile.html">Dr. Darren Elder</a></h4>
+                                                        <div class="patient-details-col">
+                                                            <span class="">Appt Date - 22 Mar 2020 , 4:30 PM</span>
+                                                        </div>
+                                                        <div class="hour-col">
+                                                            <div>
+                                                                <span class="hours">$150</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="status-col">
+                                                <div class="status-btn">
+                                                    <a href="#" class="btn success"><i><img src="img/pwa/icon-checkmark.svg" alt=""></i>Confirm</a>
+                                                </div>
+                                                <div class="status-btn">
+                                                    <a href="#" class="btn view-eye"><i><img src="img/pwa/icon-awesome-eye.svg" alt=""></i>View</a>
+                                                </div>
+                                                <div class="status-btn">
+                                                    <a href="#" class="btn print"><i><img src="img/pwa/icon-metro-printer.svg" alt=""></i>Print</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="patient-widget">		
+                                            <div class="patient-top-details">
+                                                <div>
+                                                    <span class="invoice-id">Booking Date - 16 Mar 2020</span>
+                                                </div>
+                                                <div>
+                                                    <span class="date-col">Dental</span>
+                                                </div>
+                                            </div>	
+                                            <div class="invoice-widget">
+                                                <div class="pat-info-left">
+                                                    <div class="patient-img">
+                                                        <a href="doctor-profile.html">
+                                                            <img src="img/pwa/doctors/doctor-thumb-03.jpg" class="img-fluid" alt="User Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="pat-info-cont">
+                                                        <h4 class="pat-name"><a href="doctor-profile.html">Dr. Deborah Angel</a></h4>
+                                                        <div class="patient-details-col">
+                                                            <span class="">Appt Date - 22 Mar 2020 , 4:30 PM</span>
+                                                        </div>
+                                                        <div class="hour-col">
+                                                            <div>
+                                                                <span class="hours">$150</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="status-col">
+                                                <div class="status-btn">
+                                                    <a href="#" class="btn success"><i><img src="img/pwa/icon-checkmark.svg" alt=""></i>Confirm</a>
+                                                </div>
+                                                <div class="status-btn">
+                                                    <a href="#" class="btn view-eye"><i><img src="img/pwa/icon-awesome-eye.svg" alt=""></i>View</a>
+                                                </div>
+                                                <div class="status-btn">
+                                                    <a href="#" class="btn print"><i><img src="img/pwa/icon-metro-printer.svg" alt=""></i>Print</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                              </div>
+                        </div>
+                    </div>
+
+                   <div class="tab-pane" id="prescriptions">
+                          <div class="panel panel-default">
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                  <div class="panel-body">
+                                    <div class="patient-appointments-col">	
+                                        <div class="patient-widget">		
+                                            <div class="patient-top-details">
+                                                <div>
+                                                    <span class="invoice-id">Prescription 1</span>
+                                                </div>
+                                                <div>
+                                                    <span class="date-col">14 Nov 2019</span>
+                                                </div>
+                                            </div>	
+                                            <div class="invoice-widget">
+                                                <div class="pat-info-left">
+                                                    <div class="patient-img">
+                                                        <a href="doctor-profile.html">
+                                                            <img src="img/pwa/doctors/doctor-thumb-01.jpg" class="img-fluid" alt="User Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="pat-info-cont">
+                                                        <h4 class="pat-name"><a href="doctor-profile.html">Dr. Ruby Perrin</a></h4>
+                                                        <div class="patient-details-col">
+                                                            <span class="">Dental</span>
+                                                        </div>
+                                                        <div class="status-col no-shadow">
+                                                            <div class="status-btn">
+                                                                <a href="#" class="btn view-eye"><i><img src="img/pwa/icon-awesome-eye.svg" alt=""></i>View</a>
+                                                            </div>
+                                                            <div class="status-btn">
+                                                                <a href="#" class="btn print"><i><img src="img/pwa/icon-metro-printer.svg" alt=""></i>Print</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="patient-widget">		
+                                            <div class="patient-top-details">
+                                                <div>
+                                                    <span class="invoice-id">Prescription 2</span>
+                                                </div>
+                                                <div>
+                                                    <span class="date-col">14 Nov 2019</span>
+                                                </div>
+                                            </div>	
+                                            <div class="invoice-widget">
+                                                <div class="pat-info-left">
+                                                    <div class="patient-img">
+                                                        <a href="doctor-profile.html">
+                                                            <img src="img/pwa/doctors/doctor-thumb-02.jpg" class="img-fluid" alt="User Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="pat-info-cont">
+                                                        <h4 class="pat-name"><a href="doctor-profile.html">Dr. Darren Elder</a></h4>
+                                                        <div class="patient-details-col">
+                                                            <span class="">Dental</span>
+                                                        </div>
+                                                        <div class="status-col no-shadow">
+                                                            <div class="status-btn">
+                                                                <a href="#" class="btn view-eye"><i><img src="img/pwa/icon-awesome-eye.svg" alt=""></i>View</a>
+                                                            </div>
+                                                            <div class="status-btn">
+                                                                <a href="#" class="btn print"><i><img src="img/pwa/icon-metro-printer.svg" alt=""></i>Print</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="patient-widget">		
+                                            <div class="patient-top-details">
+                                                <div>
+                                                    <span class="invoice-id">Prescription 3</span>
+                                                </div>
+                                                <div>
+                                                    <span class="date-col">14 Nov 2019</span>
+                                                </div>
+                                            </div>	
+                                            <div class="invoice-widget">
+                                                <div class="pat-info-left">
+                                                    <div class="patient-img">
+                                                        <a href="doctor-profile.html">
+                                                            <img src="img/pwa/doctors/doctor-thumb-03.jpg" class="img-fluid" alt="User Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="pat-info-cont">
+                                                        <h4 class="pat-name"><a href="doctor-profile.html">Dr. Deborah Angel</a></h4>
+                                                        <div class="patient-details-col">
+                                                            <span class="">Dental</span>
+                                                        </div>
+                                                        <div class="status-col no-shadow">
+                                                            <div class="status-btn">
+                                                                <a href="#" class="btn view-eye"><i><img src="img/pwa/icon-awesome-eye.svg" alt=""></i>View</a>
+                                                            </div>
+                                                            <div class="status-btn">
+                                                                <a href="#" class="btn print"><i><img src="img/pwa/icon-metro-printer.svg" alt=""></i>Print</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="patient-widget">		
+                                            <div class="patient-top-details">
+                                                <div>
+                                                    <span class="invoice-id">Prescription 4</span>
+                                                </div>
+                                                <div>
+                                                    <span class="date-col">14 Nov 2019</span>
+                                                </div>
+                                            </div>	
+                                            <div class="invoice-widget">
+                                                <div class="pat-info-left">
+                                                    <div class="patient-img">
+                                                        <a href="doctor-profile.html">
+                                                            <img src="img/pwa/doctors/doctor-thumb-07.jpg" class="img-fluid" alt="User Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="pat-info-cont">
+                                                        <h4 class="pat-name"><a href="doctor-profile.html">Dr. Ruby Perrin</a></h4>
+                                                        <div class="patient-details-col">
+                                                            <span class="">Dental</span>
+                                                        </div>
+                                                        <div class="status-col no-shadow">
+                                                            <div class="status-btn">
+                                                                <a href="#" class="btn view-eye"><i><img src="img/pwa/icon-awesome-eye.svg" alt=""></i>View</a>
+                                                            </div>
+                                                            <div class="status-btn">
+                                                                <a href="#" class="btn print"><i><img src="img/pwa/icon-metro-printer.svg" alt=""></i>Print</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div> 
+                                  </div>
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="tab-pane" id="medical-records">
+                          <div class="panel panel-default">
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                  <div class="panel-body">
+                                       <div class="patient-appointments-col">
+                                        <div class="patient-widget">		
+                                            <div class="patient-top-details">
+                                                <div>
+                                                    <span class="invoice-id">#MR-0010</span>
+                                                </div>
+                                                <div>
+                                                    <span class="date-col">14 Nov 2019</span>
+                                                </div>
+                                            </div>	
+                                            <div class="invoice-widget">
+                                                <div class="pat-info-left">
+                                                    <div class="patient-img">
+                                                        <a href="doctor-profile.html">
+                                                            <img src="img/pwa/doctors/doctor-thumb-01.jpg" class="img-fluid" alt="User Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="pat-info-cont">
+                                                        <h4 class="pat-name"><a href="doctor-profile.html">Dr. Ruby Perrin</a></h4>
+                                                        <div class="patient-details-col">
+                                                            <span class="">Dental</span>
+                                                            <span class="filling">Dental Filling</span>
+                                                        </div>
+                                                        <div class="download-pdf">
+                                                            <a href="img/pwa/logo.png" download>Dental-test.pdf</a>
+                                                        </div>
+                                                        <div class="status-col no-shadow">
+                                                            <div class="status-btn">
+                                                                <a href="#" class="btn view-eye"><i><img src="img/pwa/icon-awesome-eye.svg" alt=""></i>View</a>
+                                                            </div>
+                                                            <div class="status-btn">
+                                                                <a href="#" class="btn print"><i><img src="img/pwa/icon-metro-printer.svg" alt=""></i>Print</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="patient-widget">		
+                                            <div class="patient-top-details">
+                                                <div>
+                                                    <span class="invoice-id">#MR-0010</span>
+                                                </div>
+                                                <div>
+                                                    <span class="date-col">14 Nov 2019</span>
+                                                </div>
+                                            </div>	
+                                            <div class="invoice-widget">
+                                                <div class="pat-info-left">
+                                                    <div class="patient-img">
+                                                        <a href="doctor-profile.html">
+                                                            <img src="img/pwa/doctors/doctor-thumb-02.jpg" class="img-fluid" alt="User Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="pat-info-cont">
+                                                        <h4 class="pat-name"><a href="doctor-profile.html">Dr. Darren Elder</a></h4>
+                                                        <div class="patient-details-col">
+                                                            <span class="">Dental</span>
+                                                            <span class="filling">Dental Filling</span>
+                                                        </div>
+                                                        <div class="download-pdf">
+                                                            <a href="../img/pwa/logo.png" download>Dental-test.pdf</a>
+                                                        </div>
+                                                        <div class="status-col no-shadow">
+                                                            <div class="status-btn">
+                                                                <a href="#" class="btn view-eye"><i><img src="img/pwa/icon-awesome-eye.svg" alt=""></i>View</a>
+                                                            </div>
+                                                            <div class="status-btn">
+                                                                <a href="#" class="btn print"><i><img src="img/pwa/icon-metro-printer.svg" alt=""></i>Print</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="patient-widget">		
+                                            <div class="patient-top-details">
+                                                <div>
+                                                    <span class="invoice-id">#MR-0010</span>
+                                                </div>
+                                                <div>
+                                                    <span class="date-col">14 Nov 2019</span>
+                                                </div>
+                                            </div>	
+                                            <div class="invoice-widget">
+                                                <div class="pat-info-left">
+                                                    <div class="patient-img">
+                                                        <a href="doctor-profile.html">
+                                                            <img src="img/pwa/doctors/doctor-thumb-03.jpg" class="img-fluid" alt="User Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="pat-info-cont">
+                                                        <h4 class="pat-name"><a href="doctor-profile.html">Dr. Deborah Angel</a></h4>
+                                                        <div class="patient-details-col">
+                                                            <span class="">Dental</span>
+                                                            <span class="filling">Dental Filling</span>
+                                                        </div>
+                                                        <div class="download-pdf">
+                                                            <a href="../img/pwa/logo.png" download>Dental-test.pdf</a>
+                                                        </div>
+                                                        <div class="status-col no-shadow">
+                                                            <div class="status-btn">
+                                                                <a href="#" class="btn view-eye"><i><img src="img/pwa/icon-awesome-eye.svg" alt=""></i>View</a>
+                                                            </div>
+                                                            <div class="status-btn">
+                                                                <a href="#" class="btn print"><i><img src="img/pwa/icon-metro-printer.svg" alt=""></i>Print</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="patient-widget">		
+                                            <div class="patient-top-details">
+                                                <div>
+                                                    <span class="invoice-id">#MR-0010</span>
+                                                </div>
+                                                <div>
+                                                    <span class="date-col">14 Nov 2019</span>
+                                                </div>
+                                            </div>	
+                                            <div class="invoice-widget">
+                                                <div class="pat-info-left">
+                                                    <div class="patient-img">
+                                                        <a href="doctor-profile.html">
+                                                            <img src="img/pwa/doctors/doctor-thumb-07.jpg" class="img-fluid" alt="User Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="pat-info-cont">
+                                                        <h4 class="pat-name"><a href="doctor-profile.html">Dr. Ruby Perrin</a></h4>
+                                                        <div class="patient-details-col">
+                                                            <span class="">Dental</span>
+                                                            <span class="filling">Dental Filling</span>
+                                                        </div>
+                                                        <div class="download-pdf">
+                                                            <a href="../img/pwa/logo.png" download>Dental-test.pdf</a>
+                                                        </div>
+                                                        <div class="status-col no-shadow">
+                                                            <div class="status-btn">
+                                                                <a href="#" class="btn view-eye"><i><img src="img/pwa/icon-awesome-eye.svg" alt=""></i>View</a>
+                                                            </div>
+                                                            <div class="status-btn">
+                                                                <a href="#" class="btn print"><i><img src="img/pwa/icon-metro-printer.svg" alt=""></i>Print</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Doctor Profile -->
+
+    </div>
+
+</div>
+
+{% endblock body %}

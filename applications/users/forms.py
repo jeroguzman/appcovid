@@ -10,7 +10,6 @@ class UserRegisterForm(forms.ModelForm):
         widget=forms.PasswordInput(
             attrs={
                 'placeholder' : 'Contraseña',
-                'class' : 'form-control',
             }
         )
     )
@@ -20,7 +19,6 @@ class UserRegisterForm(forms.ModelForm):
         widget=forms.PasswordInput(
             attrs={
                 'placeholder' : 'Repetir Contraseña',
-                'class' : 'form-control',
             }
         )
     )
@@ -45,64 +43,52 @@ class UserRegisterForm(forms.ModelForm):
             'nombre': forms.TextInput(
                 attrs={
                     'placeholder' : 'Nombre',
-                    'class': 'form-control',
                     'onkeydown' : 'return alphaOnly(event);',
                 }
             ),
             'aPaterno': forms.TextInput(
                 attrs={
                     'placeholder' : 'Apellido Paterno',
-                    'class': 'form-control',
                     'onkeydown' : 'return alphaOnly(event);',
                 }
             ),
             'aMaterno': forms.TextInput(
                 attrs={
                     'placeholder' : 'Apellido Materno',
-                    'class': 'form-control',
                     'onkeydown' : 'return alphaOnly(event);',
                 }
             ),
             'edad': forms.NumberInput(
                 attrs={
                     'placeholder' : 'Edad',
-                    'class': 'form-control',
                 }
             ),
             'sexo': forms.Select(
                 attrs={
                     'placeholder' : 'Sexo',
-                    'class': 'form-control',
                 }
             ),
             'direccion': forms.TextInput(
                 attrs={
                     'placeholder' : 'Dirección',
-                    'class': 'form-control',
                 }
             ),
             'cp': forms.TextInput(
                 attrs={
                     'placeholder' : 'Código Postal',
-                    'class': 'form-control',
                 }
             ),
             'telefono': forms.TextInput(
                 attrs={
                     'placeholder' : 'Teléfono',
-                    'class': 'form-control',
                 }
             ),
             'correo': forms.EmailInput(
                 attrs={
                     'placeholder' : 'Correo',
-                    'class': 'form-control',
                 }
             ),
             'avisoPrivacidad': forms.CheckboxInput(
-                attrs={
-                    'class': 'form-check-input',
-                }
             ),
         }
 
@@ -170,7 +156,6 @@ class UserUpdatePasswordForm(forms.Form):
             widget=forms.PasswordInput(
                 attrs={
                     'placeholder' : 'Contraseña Actual',
-                    'class' : 'form-control',
                 }
             )
         )
@@ -180,7 +165,6 @@ class UserUpdatePasswordForm(forms.Form):
             widget=forms.PasswordInput(
                 attrs={
                     'placeholder' : 'Contraseña Nueva',
-                    'class' : 'form-control',
                 }
             )
         )

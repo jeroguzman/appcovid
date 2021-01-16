@@ -5,10 +5,11 @@ from django.contrib.auth.models import AnonymousUser
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import(
-    View
+    View,
+    TemplateView,
 )
 from django.views.generic.edit import (
-    FormView
+    FormView,
 )
 from .forms import(
     UserRegisterForm,
@@ -82,3 +83,9 @@ class UserUpdatePasswordView(LoginRequiredMixin, FormView):
         logout(self.request)
 
         return super(UserUpdatePasswordView, self).form_valid(form)
+
+class UserProfileView(LoginRequiredMixin, TemplateView):
+    model = User
+    template_name = 'users/profile.html'
+    success_url = reverse_lazy('users_app:user-profile')
+    login_url = reverse_lazy('users_app:user-login')
