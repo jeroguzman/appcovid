@@ -332,7 +332,7 @@ body.overlay-body:before {
 	width: 15px;
 	width: 30px;
 	height: 30px;
-	background-color: #1B5A90;
+	background-color: #ffc90f;
 	border-radius: 50px;
 	color: #fff;
 	display: flex;
@@ -3839,7 +3839,7 @@ i.icon.icon-forward::before, i.icon.icon-next::before {
 }
 .setting-widget button,
 .bottom-button button {
-	background-color: #1B5A90;
+	background-color: #8c2d2e;
 	border-radius: 50px;
 	text-transform: uppercase;
 	color: #FFFFFF;

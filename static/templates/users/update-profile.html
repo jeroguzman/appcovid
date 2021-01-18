@@ -13,13 +13,189 @@
     
 <!-- Cuerpo -->
 {% block body %}
-<h1>este es editar perfil de {{user}}</h1>
-<p>{{user.nombre}}</p>
-<form action="" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Guardar</button>
-</form>
+<div class="main-wrapper">
 
+    <div class="side-menu" id="sidebar-menu">
+        <div class="close-btn"><span class="material-icons">close</span></div>
+        <ul>
+            <li>
+                <a class="" href="{% url 'home_app:home' %}">
+                    <span class="material-icons">dashboard</span>
+                    Inicio
+                </a>
+            </li>
+            <li>
+                <a class="" href="{% url 'users_app:user-profile' %}">
+                    <span class="material-icons">person</span>
+                    Perfil
+                </a>
+            </li>
+            <li>
+                <a class="" href="{% url 'users_app:user-update-profile' user.id %}">
+                    <span class="material-icons">settings</span>
+                    Editar Perfil
+                </a>
+            </li>
+            <li>
+                <a class="" href="{% url 'users_app:user-update-password' %}">
+                    <span class="material-icons">lock_open</span>
+                    Cambiar Contraseña
+                </a>
+            </li>
+        </ul>
+        <a class="sidebar-logout" href="login.html"><span><img src="{% static 'img/pwa/open-account-logout.svg' %}" alt=""></span>Logout</a>
+    </div>
 
+    <div class="navbar two-action no-hairline">
+        <div class="navbar-inner d-flex align-items-center">
+            <div class="left">
+                <a href="#" class="link icon-only">
+                    <i class="custom-hamburger">
+                        <span><b></b></span>
+                    </i>
+                </a>
+            </div>
+            <div class="sliding custom-title">Editar Perfil de {{user.nombre}}  {{user.aPaterno}}</div>
+            <div class="right d-flex">
+                <a href="notifications.html" class="link icon-only"><i class="material-icons">notifications</i></a>
+                <a href="#" data-toggle="dropdown" aria-expanded="true" class="link"><i class="material-icons">more_vert</i></a>
+                <div class="dropdown-menu dropdown-menu-right header_drop_icon">
+                    <a href="{% url 'users_app:user-profile' %}" class="dropdown-item">Mi Perfil</a>
+                    <a href="{% url 'users_app:user-update-profile' user.id %}" class="dropdown-item">Editar Perfil</a>
+                    <a href="{% url 'users_app:user-logout' %}" class="dropdown-item">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content profile-settings pt-0">
+
+        <!-- Profile settings -->
+        <div class="container">
+
+             <div class="tabs-animated-wrap">
+                <div class="tabs">
+
+                    <div id="Basic-info" class="page-content tab tab-active pt-0 pb-15">
+                        <div class="setting-widget">
+                            <div class="list no-hairlines-md">
+                                <div class="widget-title">
+                                    <h5>Información</h5>
+                                </div>
+                                <div class="file-upload">
+                                    <a href="doctor-profile.html" class="file-upload-img">
+                                        <img src="{% static 'img/pwa/doctors/doctor-thumb-02.jpg' %}" class="img-fluid img-circle" width="85" alt="User Image">
+                                        <span class="cam-icon"><img src="{% static 'img/pwa/placeholder-small.svg' %}" alt=""></span>
+                                    </a>
+                                </div>
+                                <form method="POST">
+                                    {% csrf_token %}
+                                      <ul>
+                                        <li class="item-content item-input">
+                                              <div class="item-col">
+                                                <div class="item-title item-label">Nombre </div>
+                                                {{form.errors.nombre}}
+                                                <div class="item-input-wrap">
+                                                      {{form.nombre}}
+                                                      <span class="input-clear-button"></span>
+                                                </div>
+                                              </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                              <div class="item-col">
+                                                <div class="item-title item-label">Apellido Paterno</div>
+                                                {{form.errors.aPaterno}}
+                                                <div class="item-input-wrap">
+                                                      {{form.aPaterno}}
+                                                      <span class="input-clear-button"></span>
+                                                </div>
+                                              </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                              <div class="item-col">
+                                                <div class="item-title item-label">Apellido Materno </div>
+                                                {{form.errors.aMaterno}}
+                                                <div class="item-input-wrap">
+                                                      {{form.aMaterno}}
+                                                      <span class="input-clear-button"></span>
+                                                </div>
+                                              </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                              <div class="item-col">
+                                                <div class="item-title item-label">Correo </div>
+                                                {{form.errors.correo}}
+                                                <div class="item-input-wrap">
+                                                    {{form.correo}}
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                              </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                              <div class="item-col">
+                                                <div class="item-title item-label">Télefono</div>
+                                                {{form.errors.telefono}}
+                                                <div class="item-input-wrap">
+                                                      {{form.telefono}}
+                                                      <span class="input-clear-button"></span>
+                                                </div>
+                                              </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                              <div class="item-col">
+                                                <div class="item-title item-label">Edad</div>
+                                                {{form.errors.edad}}
+                                                <div class="item-input-wrap">
+                                                      {{form.edad}}
+                                                      <span class="input-clear-button"></span>
+                                                </div>
+                                              </div>
+                                        </li>
+                                        <li class="item-content item-input col-50 gender">
+                                              <div class="item-col">
+                                                <div class="item-title item-label">Sexo</div>
+                                                {{form.errors.sexo}}
+                                                <div class="item-input-wrap input-dropdown-wrap">
+                                                    {{form.sexo}}
+                                                </div>
+                                              </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-col">
+                                              <div class="item-title item-label">Dirección</div>
+                                              {{form.errors.direccion}}
+                                              <div class="item-input-wrap">
+                                                    {{form.direccion}}
+                                                    <span class="input-clear-button"></span>
+                                              </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-col">
+                                              <div class="item-title item-label">Código Postal</div>
+                                              {{form.errors.cp}}
+                                              <div class="item-input-wrap">
+                                                    {{form.cp}}
+                                                    <span class="input-clear-button"></span>
+                                              </div>
+                                            </div>
+                                        </li>
+                                        <li class="bottom-button">
+                                            <button type="submit" class="btn">ACTUALIZAR PERFIL</button>
+                                        </li>
+                                      </ul>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- Profile settings -->
+    </div>
+
+</div>
+<!-- /Main wrapper -->
 {% endblock body %}
