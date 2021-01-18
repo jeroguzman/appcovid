@@ -1,0 +1,25 @@
+{% extends '../base.html' %}
+{% load static %}
+
+<!-- Estilos adicionales -->
+{% block estilos-adicionales %}
+<!-- <link rel="stylesheet" href="{% static 'css/users/register.css'%}"> -->
+{% endblock estilos-adicionales %}
+
+<!-- Titulo -->
+{% block title %}
+    Editar Perfil de {{user.nombre}}
+{% endblock title %}
+    
+<!-- Cuerpo -->
+{% block body %}
+<h1>este es editar perfil de {{user}}</h1>
+<p>{{user.nombre}}</p>
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Guardar</button>
+</form>
+
+
+{% endblock body %}
