@@ -190,4 +190,79 @@ class UserUpdatePasswordForm(forms.Form):
             if self.cleaned_data['new_password'] != self.cleaned_data['confirm_new_pass']:
                 self.add_error('confirm_new_pass', 'Las contraseñas actualizadas no coinciden')
 
+class UserUpdateProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = (
+            'nombre',
+            'aPaterno',
+            'aMaterno',
+            'edad',
+            'sexo',
+            'direccion',
+            'cp',
+            'telefono',
+            'correo',
+        )
 
+        widgets = {
+            'nombre': forms.TextInput(
+                attrs={
+                    'placeholder' : 'Nombre',
+                    'onkeydown' : 'return alphaOnly(event);',
+                }
+            ),
+            'aPaterno': forms.TextInput(
+                attrs={
+                    'placeholder' : 'Apellido Paterno',
+                    'onkeydown' : 'return alphaOnly(event);',
+                }
+            ),
+            'aMaterno': forms.TextInput(
+                attrs={
+                    'placeholder' : 'Apellido Materno',
+                    'onkeydown' : 'return alphaOnly(event);',
+                }
+            ),
+            'edad': forms.NumberInput(
+                attrs={
+                    'placeholder' : 'Edad',
+                }
+            ),
+            'sexo': forms.Select(
+                attrs={
+                    'placeholder' : 'Sexo',
+                }
+            ),
+            'direccion': forms.TextInput(
+                attrs={
+                    'placeholder' : 'Dirección',
+                }
+            ),
+            'cp': forms.TextInput(
+                attrs={
+                    'placeholder' : 'Código Postal',
+                }
+            ),
+            'telefono': forms.TextInput(
+                attrs={
+                    'placeholder' : 'Teléfono',
+                }
+            ),
+            'correo': forms.EmailInput(
+                attrs={
+                    'placeholder' : 'Correo',
+                }
+            ),
+        }
+
+        labels = {
+            'nombre': '',
+            'aPaterno': '',
+            'aMaterno': '',
+            'edad': '',
+            'direccion': '',
+            'cp': '',
+            'telefono': '',
+            'correo': '',
+        }

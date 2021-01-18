@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import AnonymousUser
@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import(
     View,
     TemplateView,
+    UpdateView,
 )
 from django.views.generic.edit import (
     FormView,
@@ -15,6 +16,7 @@ from .forms import(
     UserRegisterForm,
     UserLoginForm,
     UserUpdatePasswordForm,
+    UserUpdateProfileForm,
 )
     
 from .models import User
@@ -89,3 +91,27 @@ class UserProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'users/profile.html'
     success_url = reverse_lazy('users_app:user-profile')
     login_url = reverse_lazy('users_app:user-login')
+
+class UserUpdateProfileView(LoginRequiredMixin, UpdateView):
+    model = User
+    template_name = 'users/update-profile.html'
+    form_class = UserUpdateProfileForm
+    success_message = 'yeaa u did it'
+    success_url = '/'
+    login_url = reverse_lazy('users_app:user-login')
+    queryset = User.objects.all()
+
+    def get_object(self):
+        pk_ = self.kwargs.get("pk")
+        return get_object_or_404(User, pk=pk_)
+
+    def form_valid(self, form):
+        current_user = self.request.user
+        user_to_edit = User.objects.filter(pk=self.kwargs['pk'])
+
+        if user_to_edit.exists() or current_user.is_superuser:
+            return super(UserUpdateProfileView, self).form_valid(form)
+        else:
+            return HttpResponseRedirect(
+                reverse('users_app:user-logout')
+            )

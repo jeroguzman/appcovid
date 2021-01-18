@@ -27,7 +27,13 @@
                 </a>
             </li>
             <li>
-                <a class="" href="profile-settings.html">
+                <a class="" href="{% url 'users_app:user-profile' %}">
+                    <span class="material-icons">person</span>
+                    Perfil
+                </a>
+            </li>
+            <li>
+                <a class="" href="{% url 'users_app:user-update-profile' user.id %}">
                     <span class="material-icons">settings</span>
                     Editar Perfil
                 </a>
