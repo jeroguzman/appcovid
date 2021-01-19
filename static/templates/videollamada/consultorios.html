@@ -8,7 +8,7 @@
 
 <!-- Titulo -->
 {% block title %}
-    Inicio
+    Consultorios
 {% endblock title %}
     
 <!-- Cuerpo -->
@@ -62,7 +62,7 @@
                     </i>
                 </a>
             </div>
-            <div class="sliding custom-title">Inicio</div>
+            <div class="sliding custom-title">Consultorios Videollamada</div>
             <div class="right d-flex">
                 <a href="#" class="link icon-only"><i class="material-icons">notifications</i></a>
                 <!--<a href="#" data-toggle="dropdown" aria-expanded="true" class="link"><i class="material-icons">more_vert</i></a>
@@ -89,25 +89,13 @@
                                 <i class="fas fa-ellipsis-v"></i>
                             </div>
                         </div>-->
-                        <h4 class="doc-name">Bienvenido {{user.nombre}} {{user.aPaterno}}</h4>
+                        <h4 class="doc-name">Hola, {{user.nombre}} {{user.aPaterno}}</h4>
                         <p class="doc-speciality"></p>
                         
                             <div class="doc-location">
-                                <p> ¿En que te podemos ayudar hoy?</p>
+                                <p> Elige un consultorio, pronto un medico te consultara</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="patient-details">
-                <div class="inner-patient-detaials">
-                    <div class="patient-col">
-                        <img src='{% static "/img/pwa/imagenvideo.jpg" %}'>
-                    </div>
-                    
-                    <div class="patient-col">
-                        <img src='{% static "/img/pwa/saludyb.png" %}'>
                     </div>
                 </div>
             </div>
@@ -115,10 +103,21 @@
             <div class="appointments-details">
                 <div class="inner-appointment">
                     <div class="appointment-col">
-                        <a href="{% url 'videollamada:consultorios' %}" class="btn">Consultorios Videollamada</a>
+                        <a href="{% url 'videollamada:consultorio1' %}" class="btn">Consultorio 1</a>
                     </div>
                     <div class="appointment-col">
-                        <a href="#" class="btn">Salud y Bienestar</a>
+                        <a href="#" class="btn">Consultorio 2</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="appointments-details">
+                <div class="inner-appointment">
+                    <div class="appointment-col">
+                        <a href="#" class="btn">Consultorio 3</a>
+                    </div>
+                    <div class="appointment-col">
+                        <a href="#" class="btn">Consultorio 4</a>
                     </div>
                 </div>
             </div>

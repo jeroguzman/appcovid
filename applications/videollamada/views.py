@@ -2,9 +2,8 @@ from django.shortcuts import render,redirect
 from django.views import View
 from django.http import HttpResponse
 
-
-def videollamada(request):
-    return render(request, 'videollamada/videollamada.html')
+def consultorios(request):
+    return render(request, 'videollamada/consultorios.html')
 
 
 
@@ -12,7 +11,7 @@ class AgoraVideoCall(View):
     app_id=''
     channel = ''
     permission_class = 'AllowAny'
-    channel_end_url = '/videollamada/'
+    channel_end_url = '/'
     title = 'Videollamada Medica'
 
     def get_permission(self,request,permission_class):
