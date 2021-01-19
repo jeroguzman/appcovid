@@ -2220,6 +2220,7 @@ body.overlay-body:before {
 	z-index: 500;
 	left: 0;
 	right: 0;
+	text-align: center;
 }
 .profile-title {
 	padding: 0 15px;
@@ -5694,6 +5695,20 @@ ul li span.trash-icon {
 	width: 100%;
 }
 .btn-submit:hover {
+	background-color: #2D2C2C;
+}
+.btn-footer {
+	border: 0;
+	border-radius: 15px;
+	background-color: #8C2D2E;
+	display: inline-block;
+	color: #fff !important;
+	text-transform: uppercase;
+	cursor: pointer;
+	padding: 14px 15px;
+	width: 50%;
+}
+.btn-footer:hover {
 	background-color: #2D2C2C;
 }
 .change-password-col .back-btn{
