@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -15,18 +15,28 @@ from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.http import require_GET, require_POST
 from django.shortcuts import get_object_or_404
 #from django.contrib.auth.models import get_user_model
-from django.contrib.auth import get_user_model
+#from django.contrib.auth import get_user_model
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from webpush import send_user_notification
 import json
 
-UserAuth = get_user_model()
+#UserAuth = get_user_model()
+
+# def home(request):
+#     if request.user.is_authenticated:
+#         if request.user.is_paciente:
+#             return redirect('home_app:home')
+#         else:
+#             return redirect('home_app:dashboard')
+#     return render(request, 'users_app:login')
+
 
 @method_decorator([login_required, paciente_required], name='dispatch')
 class HomeView(LoginRequiredMixin, TemplateView):
     template_name = 'home/home.html'
     login_url = reverse_lazy('users_app:user-login')
+        
 
 @method_decorator([login_required, doctor_required], name='dispatch')
 class DashboardView(LoginRequiredMixin, ListView):
@@ -56,7 +66,7 @@ def send_push(request):
             return JsonResponse(status=400, data={"message": "Invalid data format"})
 
         user_id = data['id']
-        user = get_object_or_404(UserAuth, pk=user_id)
+        user = get_object_or_404(User, pk=user_id)
         payload = {'head': data['head'], 'body': data['body']}
         send_user_notification(user=user, payload=payload, ttl=1000)
 

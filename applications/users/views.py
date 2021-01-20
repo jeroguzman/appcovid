@@ -75,7 +75,6 @@ class UserRegisterDoctorView(FormView):
 class UserLoginView(FormView):
     template_name = 'users/login.html'
     form_class = UserLoginForm
-    success_url = reverse_lazy('home_app:dashboard')
     
 
     def form_valid(self, form):
@@ -84,9 +83,10 @@ class UserLoginView(FormView):
             password = form.cleaned_data['password1']
         )
         login(self.request, user)
-        print(user.id)
-
-        return super(UserLoginView, self).form_valid(form)
+        if self.request.user.is_paciente:
+            return redirect('home_app:home')
+        else:
+            return redirect('home_app:dashboard')
 
 
 class UserLogoutView(View):
