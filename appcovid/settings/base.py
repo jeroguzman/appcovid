@@ -36,6 +36,7 @@ LOCAL_APPS = (
 THIRD_PARTY_APPS = (
     'bootstrap4',
     'corsheaders',
+    'webpush',
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
@@ -125,3 +126,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+WEBPUSH_SETTINGS = {
+   "VAPID_PUBLIC_KEY": "BIAdqGnd66Ets5M7qF4mDOAWxW0INzY9OlVRbCM3TL7Gj-7Z_tvTx7KVtNr83-D6X_bgFQKyHyhQXd8bW7uZxYc",
+   "VAPID_PRIVATE_KEY": "k41zAAVnfMgZw2fQY_3yc35f_M7o7SKTpR7qBbceQtc",
+   "VAPID_ADMIN_EMAIL": "jeroguzman@gmail.com"
+}
