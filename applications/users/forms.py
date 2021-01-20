@@ -1,9 +1,10 @@
 from django import forms
+from django.db import transaction
 from django.contrib.auth import authenticate
-from .models import User
+from django.contrib.auth.forms import UserCreationForm
+from .models import User, Paciente, Doctor
 
-class UserRegisterForm(forms.ModelForm):
-
+class UserRegisterPacienteForm(UserCreationForm):
     password1 = forms.CharField(
         label = '',
         required=True,
@@ -23,7 +24,7 @@ class UserRegisterForm(forms.ModelForm):
         )
     )
 
-    class Meta:
+    class Meta(UserCreationForm.Meta):
         #nombre, apellido paterno, apellido materno, edad, sexo, direccion, cp, telefono, correo, contrasena, confirmar contrasena, aviso de privacidad
         model = User
         fields = (
@@ -103,6 +104,258 @@ class UserRegisterForm(forms.ModelForm):
             'correo': '',
             'avisoPrivacidad': 'He leido el aviso de privacidad',
         }
+
+    @transaction.atomic
+    def save(self):
+        user = super().save(commit=False)
+        user.is_paciente = True
+        user.nombre = self.cleaned_data.get('nombre')
+        user.aPaterno = self.cleaned_data.get('aPaterno')
+        user.aMaterno = self.cleaned_data.get('aMaterno')
+        user.edad = self.cleaned_data.get('edad')
+        user.sexo = self.cleaned_data.get('sexo')
+        user.direccion = self.cleaned_data.get('direccion')
+        user.cp = self.cleaned_data.get('cp')
+        user.avisoPrivacidad = self.cleaned_data.get('avisoPrivacidad')
+        user.save()
+        paciente = Paciente.objects.create(user=user)
+        return user
+
+    def clean_password2(self):
+        if self.cleaned_data['password1'] != self.cleaned_data['password2']:
+            self.add_error('password1', 'Las contraseñas no coinciden')
+
+# class UserRegisterPacienteForm(forms.ModelForm):
+
+#     password1 = forms.CharField(
+#         label = '',
+#         required=True,
+#         widget=forms.PasswordInput(
+#             attrs={
+#                 'placeholder' : 'Contraseña',
+#             }
+#         )
+#     )
+#     password2 = forms.CharField(
+#         label = '',
+#         required=True,
+#         widget=forms.PasswordInput(
+#             attrs={
+#                 'placeholder' : 'Repetir Contraseña',
+#             }
+#         )
+#     )
+
+#     class Meta:
+#         #nombre, apellido paterno, apellido materno, edad, sexo, direccion, cp, telefono, correo, contrasena, confirmar contrasena, aviso de privacidad
+#         model = User
+#         fields = (
+#             'nombre',
+#             'aPaterno',
+#             'aMaterno',
+#             'edad',
+#             'sexo',
+#             'direccion',
+#             'cp',
+#             'telefono',
+#             'correo',
+#             'avisoPrivacidad',
+#         )
+
+#         widgets = {
+#             'nombre': forms.TextInput(
+#                 attrs={
+#                     'placeholder' : 'Nombre',
+#                     'onkeydown' : 'return alphaOnly(event);',
+#                 }
+#             ),
+#             'aPaterno': forms.TextInput(
+#                 attrs={
+#                     'placeholder' : 'Apellido Paterno',
+#                     'onkeydown' : 'return alphaOnly(event);',
+#                 }
+#             ),
+#             'aMaterno': forms.TextInput(
+#                 attrs={
+#                     'placeholder' : 'Apellido Materno',
+#                     'onkeydown' : 'return alphaOnly(event);',
+#                 }
+#             ),
+#             'edad': forms.NumberInput(
+#                 attrs={
+#                     'placeholder' : 'Edad',
+#                 }
+#             ),
+#             'sexo': forms.Select(
+#                 attrs={
+#                     'placeholder' : 'Sexo',
+#                 }
+#             ),
+#             'direccion': forms.TextInput(
+#                 attrs={
+#                     'placeholder' : 'Dirección',
+#                 }
+#             ),
+#             'cp': forms.TextInput(
+#                 attrs={
+#                     'placeholder' : 'Código Postal',
+#                 }
+#             ),
+#             'telefono': forms.TextInput(
+#                 attrs={
+#                     'placeholder' : 'Teléfono',
+#                 }
+#             ),
+#             'correo': forms.EmailInput(
+#                 attrs={
+#                     'placeholder' : 'Correo',
+#                 }
+#             ),
+#             'avisoPrivacidad': forms.CheckboxInput(
+#             ),
+#         }
+
+#         labels = {
+#             'nombre': '',
+#             'aPaterno': '',
+#             'aMaterno': '',
+#             'edad': '',
+#             'direccion': '',
+#             'cp': '',
+#             'telefono': '',
+#             'correo': '',
+#             'avisoPrivacidad': 'He leido el aviso de privacidad',
+#         }
+
+#     def clean_password2(self):
+#         if self.cleaned_data['password1'] != self.cleaned_data['password2']:
+#             self.add_error('password1', 'Las contraseñas no coinciden')
+
+class UserRegisterDoctorForm(UserCreationForm):
+
+    password1 = forms.CharField(
+        label = '',
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder' : 'Contraseña',
+            }
+        )
+    )
+    password2 = forms.CharField(
+        label = '',
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder' : 'Repetir Contraseña',
+            }
+        )
+    )
+    universidad = forms.CharField(
+        label = '',
+        required=True,
+    )
+
+    class Meta(UserCreationForm.Meta):
+        #nombre, apellido paterno, apellido materno, edad, sexo, direccion, cp, telefono, correo, contrasena, confirmar contrasena, aviso de privacidad
+        model = User
+        fields = (
+            'nombre',
+            'aPaterno',
+            'aMaterno',
+            'edad',
+            'sexo',
+            'direccion',
+            'cp',
+            'telefono',
+            'correo',
+            'avisoPrivacidad',
+        )
+
+        widgets = {
+            'nombre': forms.TextInput(
+                attrs={
+                    'placeholder' : 'Nombre',
+                    'onkeydown' : 'return alphaOnly(event);',
+                }
+            ),
+            'aPaterno': forms.TextInput(
+                attrs={
+                    'placeholder' : 'Apellido Paterno',
+                    'onkeydown' : 'return alphaOnly(event);',
+                }
+            ),
+            'aMaterno': forms.TextInput(
+                attrs={
+                    'placeholder' : 'Apellido Materno',
+                    'onkeydown' : 'return alphaOnly(event);',
+                }
+            ),
+            'edad': forms.NumberInput(
+                attrs={
+                    'placeholder' : 'Edad',
+                }
+            ),
+            'sexo': forms.Select(
+                attrs={
+                    'placeholder' : 'Sexo',
+                }
+            ),
+            'direccion': forms.TextInput(
+                attrs={
+                    'placeholder' : 'Dirección',
+                }
+            ),
+            'cp': forms.TextInput(
+                attrs={
+                    'placeholder' : 'Código Postal',
+                }
+            ),
+            'telefono': forms.TextInput(
+                attrs={
+                    'placeholder' : 'Teléfono',
+                }
+            ),
+            'correo': forms.EmailInput(
+                attrs={
+                    'placeholder' : 'Correo',
+                }
+            ),
+            'avisoPrivacidad': forms.CheckboxInput(
+            ),
+        }
+
+        labels = {
+            'nombre': '',
+            'aPaterno': '',
+            'aMaterno': '',
+            'edad': '',
+            'direccion': '',
+            'cp': '',
+            'telefono': '',
+            'correo': '',
+            'avisoPrivacidad': 'He leido el aviso de privacidad',
+        }
+    @transaction.atomic
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.is_doctor = True
+        user.nombre = self.cleaned_data.get('nombre')
+        user.aPaterno = self.cleaned_data.get('aPaterno')
+        user.aMaterno = self.cleaned_data.get('aMaterno')
+        user.edad = self.cleaned_data.get('edad')
+        user.sexo = self.cleaned_data.get('sexo')
+        user.direccion = self.cleaned_data.get('direccion')
+        user.cp = self.cleaned_data.get('cp')
+        user.avisoPrivacidad = self.cleaned_data.get('avisoPrivacidad')
+        if commit:
+            user.save()
+        doctor = Doctor.objects.create(
+            user=user, 
+            universidad =self.cleaned_data['universidad'] 
+        )
+        doctor.save()
+        return user
 
     def clean_password2(self):
         if self.cleaned_data['password1'] != self.cleaned_data['password2']:

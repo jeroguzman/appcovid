@@ -1,0 +1,24 @@
+{% extends '../../base.html' %}
+{% load static %}
+
+<!-- Estilos adicionales -->
+{% block estilos-adicionales %}
+<link rel="stylesheet" href="{% static 'css/users/register.css'%}">
+{% endblock estilos-adicionales %}
+
+<!-- Titulo -->
+{% block title %}
+    Registrar
+{% endblock title %}
+    
+<!-- Cuerpo -->
+{% block body %}
+
+<h1>registrar doctor</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Subelo mija</button>
+
+</form>
+{% endblock body %}

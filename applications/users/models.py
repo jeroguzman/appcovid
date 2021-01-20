@@ -17,11 +17,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     aMaterno = models.CharField(max_length=120, null=True, blank=True)
     edad = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(110)], null=True, blank=True)
     sexo = models.CharField(max_length=1, choices=SEXO, null=True, blank=True)
-    direccion = models.CharField(max_length=10, null=True, blank=True)
+    direccion = models.CharField(max_length=500, null=True, blank=True)
     cp = models.CharField(max_length=5, null=True, blank=True)
-    telefono = models.CharField(max_length=500, null=True, unique=True)
+    telefono = models.CharField(max_length=14, null=True, unique=True)
     correo = models.EmailField(null=True, unique=True)
     avisoPrivacidad = models.BooleanField(null=False, default=False, blank=True)
+    is_doctor = models.BooleanField(default=False)
+    is_paciente = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'telefono'
@@ -32,3 +34,10 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return '{} {} {}'.format(self.nombre, self.aPaterno, self.aMaterno)
+
+class Paciente(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key = True)
+
+class Doctor(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    universidad = models.CharField(max_length=120, null=True, blank=True)

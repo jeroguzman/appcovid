@@ -1,0 +1,20 @@
+{% extends '../../base.html' %}
+{% load static %}
+
+<!-- Estilos adicionales -->
+{% block estilos-adicionales %}
+<link rel="stylesheet" href="{% static 'css/users/register.css'%}">
+{% endblock estilos-adicionales %}
+
+<!-- Titulo -->
+{% block title %}
+    Registrar
+{% endblock title %}
+    
+<!-- Cuerpo -->
+{% block body %}
+<h1>Registrar</h1>
+<a href="{% url 'users_app:user-register-paciente' %}">Paciente?</a>
+<a href="{% url 'users_app:user-register-doctor' %}">Doctor?</a>
+
+{% endblock body %}
