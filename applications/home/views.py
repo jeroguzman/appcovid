@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -15,11 +14,14 @@ from django.views.generic import (
 from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.http import require_GET, require_POST
 from django.shortcuts import get_object_or_404
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import get_user_model
+from django.contrib.auth import get_user_model
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from webpush import send_user_notification
 import json
+
+UserAuth = get_user_model()
 
 @method_decorator([login_required, paciente_required], name='dispatch')
 class HomeView(LoginRequiredMixin, TemplateView):
@@ -54,7 +56,7 @@ def send_push(request):
             return JsonResponse(status=400, data={"message": "Invalid data format"})
 
         user_id = data['id']
-        user = get_object_or_404(User, pk=user_id)
+        user = get_object_or_404(UserAuth, pk=user_id)
         payload = {'head': data['head'], 'body': data['body']}
         send_user_notification(user=user, payload=payload, ttl=1000)
 
