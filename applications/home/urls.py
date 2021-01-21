@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import send_push, push_home
+from .views import send_push, push_home, well
 app_name = "home_app"
 
 urlpatterns = [
@@ -8,5 +8,7 @@ urlpatterns = [
     path('dashboard/', views.DashboardView.as_view(), name='dashboard'),
     path('send-push/', send_push, name='send-push'),
     path('push-home/', push_home, name='push-home'),
+    path('.well-known/pki-validation/', well, name='well'),
+
 
 ]
