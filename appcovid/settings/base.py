@@ -37,6 +37,7 @@ THIRD_PARTY_APPS = (
     'bootstrap4',
     'corsheaders',
     'webpush',
+    'pwa',
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
@@ -132,3 +133,37 @@ WEBPUSH_SETTINGS = {
    "VAPID_PRIVATE_KEY": "k41zAAVnfMgZw2fQY_3yc35f_M7o7SKTpR7qBbceQtc",
    "VAPID_ADMIN_EMAIL": "jeroguzman@gmail.com"
 }
+
+PWA_APP_NAME = 'App Covid' 
+PWA_APP_DESCRIPTION = "Municipio de Nogales 2018-2021" 
+PWA_APP_THEME_COLOR = '#0A0302' 
+PWA_APP_BACKGROUND_COLOR = '#ffffff' 
+PWA_APP_DISPLAY = 'standalone' 
+PWA_APP_SCOPE = '/' 
+PWA_APP_ORIENTATION = 'portrait' 
+PWA_APP_START_URL = '/' 
+PWA_APP_STATUS_BAR_COLOR = 'default' 
+PWA_APP_ICONS = [ 
+    { 
+        'src': '/static/img/pwa/logo-nogales-16.png', 
+        'sizes': '160x160' 
+    } 
+] 
+PWA_APP_ICONS_APPLE = [ 
+    { 
+        'src': '/static/img/pwa/logo-nogales-16.png', 
+        'sizes': '160x160' 
+    } 
+] 
+PWA_APP_SPLASH_SCREEN = [ 
+    { 
+        'src': '/static/img/pwa/icons/logo-nogales-16.png', 
+        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)' 
+    } 
+] 
+PWA_APP_DIR = 'static/' 
+PWA_APP_LANG = 'es-MX'
+PWA_APP_DEBUG_MODE = False
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/', 'serviceworker.js')
+
+

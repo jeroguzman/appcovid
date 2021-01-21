@@ -7,17 +7,6 @@ Version: 1.1
 
 "use strict";
 
-// Register service worker.
-if ('serviceWorker' in navigator) {
-	window.addEventListener('load', () => {
-    navigator.serviceWorker.register("/static/service-worker.js")
-	      .then((reg) => {
-	        console.log('Service worker registered.', reg);
-	      });
-	});
-}
-
-
 //Fancybox
 if(jQuery('[data-fancybox="gallery"]').length > 0) {
 	$('[data-fancybox="gallery"]').fancybox({

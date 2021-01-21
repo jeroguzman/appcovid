@@ -13,6 +13,7 @@ distro==1.4.0
 Django==3.1.4
 django-bootstrap4==2.3.1
 django-cors-headers==3.6.0
+django-pwa==1.0.10
 django-webpush==0.3.3
 html5lib==1.0.1
 http-ece==1.1.0
