@@ -75,7 +75,6 @@ class UserRegisterDoctorView(FormView):
 class UserLoginView(FormView):
     template_name = 'users/login.html'
     form_class = UserLoginForm
-    
 
     def form_valid(self, form):
         user = authenticate(

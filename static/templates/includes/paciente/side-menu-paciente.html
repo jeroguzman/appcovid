@@ -1,0 +1,37 @@
+{% load static %}
+<div class="side-menu" id="sidebar-menu">
+    <div class="close-btn"><span class="material-icons">close</span></div>
+    <ul>
+        <li>
+            <a class="" href="{% url 'home_app:home' %}">
+                <span class="material-icons">dashboard</span>
+                Inicio
+            </a>
+        </li>
+        <li>
+            <a class="" href="#">
+                <span class="material-icons">date_range</span>
+                Recetas
+            </a>
+        </li>
+        <li>
+            <a class="" href="{% url 'users_app:user-profile' %}">
+                <span class="material-icons">person</span>
+                Perfil
+            </a>
+        </li>
+        <li>
+            <a class="" href="{% url 'users_app:user-update-profile' user.id %}">
+                <span class="material-icons">settings</span>
+                Editar Perfil
+            </a>
+        </li>
+        <li>
+            <a class="" href="{% url 'users_app:user-update-password' %}">
+                <span class="material-icons">lock_open</span>
+                Cambiar Contraseña
+            </a>
+        </li>
+    </ul>
+    <a class="sidebar-logout" href="{% url 'users_app:user-logout' %}"><span><img src='{% static "/img/pwa/open-account-logout.svg" %}' alt=""></span>Cerrar Sesión</a>
+</div>

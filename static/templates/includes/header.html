@@ -1,0 +1,16 @@
+{% load humanize %}
+<div class="navbar two-action no-hairline">
+    <div class="navbar-inner d-flex align-items-center">
+        <div class="left">
+            <a href="#" class="link icon-only">
+                <i class="custom-hamburger">
+                    <span><b></b></span>
+                </i>
+            </a>
+        </div>
+        <div class="sliding custom-title">{{title}} {{user.nombre | title}} {{user.aPaterno | title}}</div>
+        <div class="right d-flex">
+            <a href="#" class="link icon-only"><i class="material-icons">notifications</i></a>
+        </div>
+    </div>
+</div>

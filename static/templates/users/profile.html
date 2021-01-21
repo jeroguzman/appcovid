@@ -9,7 +9,7 @@
 
 <!-- Titulo -->
 {% block title %}
-    Perfil de {{user.nombre}}
+    Perfil de {{user.nombre | title}}
 {% endblock title %}
     
 <!-- Cuerpo -->
@@ -17,58 +17,9 @@
 
 <div class="main-wrapper">
 
-    <div class="side-menu" id="sidebar-menu">
-        <div class="close-btn"><span class="material-icons">close</span></div>
-        <ul>
-            <li>
-                <a class="" href="{% url 'home_app:home' %}">
-                    <span class="material-icons">dashboard</span>
-                    Inicio
-                </a>
-            </li>
-            <li>
-                <a class="" href="{% url 'users_app:user-profile' %}">
-                    <span class="material-icons">person</span>
-                    Perfil
-                </a>
-            </li>
-            <li>
-                <a class="" href="{% url 'users_app:user-update-profile' user.id %}">
-                    <span class="material-icons">settings</span>
-                    Editar Perfil
-                </a>
-            </li>
-            <li>
-                <a class="" href="{% url 'users_app:user-update-password' %}">
-                    <span class="material-icons">lock_open</span>
-                    Cambiar Contraseña
-                </a>
-            </li>
-        </ul>
-        <a class="sidebar-logout" href="{% url 'users_app:user-logout' %}"><span><img src="{% static 'img/pwa/open-account-logout.svg' %}" alt=""></span>Cerrar Sesión</a>
-    </div>
+    {% include '../includes/paciente/side-menu-paciente.html' %}
+    {% include '../includes/header.html' with title="Perfil de"%}
 
-    <div class="navbar two-action no-hairline">
-        <div class="navbar-inner d-flex align-items-center">
-            <div class="left">
-                <a href="#" class="link icon-only">
-                    <i class="custom-hamburger">
-                        <span><b></b></span>
-                    </i>
-                </a>
-            </div>
-            <div class="sliding custom-title">Perfil de {{user.nombre | title}}</div>
-            <div class="right d-flex">
-                <a href="notifications.html" class="link icon-only"><i class="material-icons">notifications</i></a>
-                <!--<a href="#" data-toggle="dropdown" aria-expanded="true" class="link"><i class="material-icons">more_vert</i></a>
-                <div class="dropdown-menu dropdown-menu-right header_drop_icon">
-                    <a href="{% url 'users_app:user-profile' %}" class="dropdown-item">Mi Perfil</a>
-                    <a href="{% url 'users_app:user-update-profile' user.id %}" class="dropdown-item">Editar Perfil</a>
-                    <a href="{% url 'users_app:user-logout' %}" class="dropdown-item">Cerrar Sesión</a>
-                </div>-->
-            </div>
-        </div>
-    </div>
 
     <div class="page-content pt-0">
 
@@ -103,7 +54,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="doc-info-cont">
-                                                        <h4 class="doc-name mb-2"><a href="patient-profile.html">{{user}}</a></h4>
+                                                        <h4 class="doc-name mb-2"><a href="patient-profile.html">{{user | title}}</a></h4>
                                                         <div class="patient-details-col">
                                                             <span>Patient ID - {{user.id}}</span>
                                                         </div>
