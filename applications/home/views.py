@@ -74,5 +74,3 @@ def send_push(request):
     except TypeError:
         return JsonResponse(status=500, data={"message": "An error occurred"})
 
-def well(request):
-    return render(request, 'ED2FF1C875C44F9BAC2E2B41264C40F0.txt')
