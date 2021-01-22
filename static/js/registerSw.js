@@ -61,7 +61,7 @@ const subscribe = async (reg) => {
     const sub = await reg.pushManager.subscribe(options);
     sendSubData(sub)
 };
- 
+
 const sendSubData = async (subscription) => {
     const browser = navigator.userAgent.match(/(firefox|msie|chrome|safari|trident)/ig)[0].toLowerCase();
     const data = {
