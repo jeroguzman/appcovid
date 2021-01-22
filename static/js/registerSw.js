@@ -1,6 +1,6 @@
 const registerSw = async () => {
     if ('serviceWorker' in navigator) {
-        const reg = await navigator.serviceWorker.register('../static/serviceworker.js');
+        const reg = await navigator.serviceWorker.register('../serviceworker.js');
         initialiseState(reg)
 
     } else {
@@ -70,7 +70,7 @@ const sendSubData = async (subscription) => {
         browser: browser,
     };
 
-    const res = await fetch('/webpush/save_information', {
+    const res = await fetch('../static/save_information', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
