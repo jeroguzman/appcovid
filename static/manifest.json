@@ -1,34 +1,23 @@
 {
-  "name": "AppCovid-PWA",
-  "short_name": "AppCovid-PWA",
-  "icons": [{
-    "src": "img/pwa/icons/icon-128x128.png",
-      "sizes": "128x128",
-      "type": "image/png"
-    }, {
-      "src": "img/pwa/icons/icon-144x144.png",
-      "sizes": "144x144",
-      "type": "image/png"
-    }, {
-      "src": "img/pwa/icons/icon-152x152.png",
-      "sizes": "152x152",
-      "type": "image/png"
-    }, {
-      "src": "img/pwa/icons/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    }, {
-      "src": "img/pwa/icons/icon-256x256.png",
-      "sizes": "256x256",
-      "type": "image/png"
-    }, {
-      "src": "img/pwa/icons/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }],
-  "start_url": "/",
-  "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#8C2D2E",
-  "theme_color": "#8C2D2E"
-}
+    "short_name": "AppCovid",
+    "name": "AppCovid",
+    "description": "Municipio de Nogales 2018-2021",
+    "icons": [
+      {
+        "src": "/img/pwa/logo-nogales-16.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/img/pwa/logo-nogales-16.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/",
+    "background_color": "#8C2D2E",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#8C2D2E"
+    
+  }

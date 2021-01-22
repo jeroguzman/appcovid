@@ -8,5 +8,4 @@ urlpatterns = [
     path('dashboard/', views.DashboardView.as_view(), name='dashboard'),
     path('send-push/', send_push, name='send-push'),
     path('push-home/', push_home, name='push-home'),
-
 ]

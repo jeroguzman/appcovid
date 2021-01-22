@@ -73,3 +73,4 @@ def send_push(request):
         return JsonResponse(status=200, data={"message": "Web push successful"})
     except TypeError:
         return JsonResponse(status=500, data={"message": "An error occurred"})
+
