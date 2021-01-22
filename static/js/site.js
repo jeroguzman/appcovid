@@ -31,7 +31,7 @@ pushForm.addEventListener('submit', async function (e) {
         button.innerText = 'Sending...';
         button.disabled = true;
 
-        const res = await fetch('/send-push', {
+        const res = await fetch('/send-push/', {
             method: 'POST',
             body: JSON.stringify({head, body, id}),
             headers: {
