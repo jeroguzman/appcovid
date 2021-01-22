@@ -1,5 +1,6 @@
 {% extends '../base.html' %}
 {% load static %}
+{% load humanize %}
 
 <!-- Estilos adicionales -->
 {% block estilos-adicionales %}
@@ -13,98 +14,10 @@
     
 <!-- Cuerpo -->
 {% block body %}
-<h1>dasboard doctores</h1>
-
 <div class="main-wrapper">
 
-    <div class="side-menu" id="sidebar-menu">
-        <div class="close-btn"><span class="material-icons">close</span></div>
-        <ul>
-            <li>
-                <a class="" href="index.html">
-                    <span class="material-icons">dashboard</span>
-                    Dashboard
-                </a>
-            </li>
-            <li>
-                <a class="" href="appointments.html">
-                    <span class="material-icons">date_range</span>
-                    Appointments
-                </a>
-            </li>
-            <li>
-                <a class="" href="patients-list.html">
-                    <span class="material-icons">person</span>
-                    My Patients
-                </a>
-            </li>
-            <li>
-                <a class="" href="schedule-timings.html">
-                    <span class="material-icons">access_time</span>
-                    Schedule Timings
-                </a>
-            </li>
-            <li>
-                <a class="" href="invoices.html">
-                    <span class="material-icons">insert_drive_file</span>
-                    Invoices
-                </a>
-            </li>
-            <li>
-                <a class="" href="pages.html">
-                    <span class="material-icons">pages</span>
-                    Pages
-                </a>
-            </li>
-            <li>
-                <a class="" href="chat.html">
-                    <span class="material-icons">message</span>
-                    Message
-                </a>
-            </li>
-            <li>
-                <a class="" href="profile-settings.html">
-                    <span class="material-icons">settings</span>
-                    Profile Settings
-                </a>
-            </li>
-            <li>
-                <a class="" href="social-media.html">
-                    <span class="material-icons">share</span>
-                    Social Media
-                </a>
-            </li>
-            <li>
-                <a class="" href="change-password.html">
-                    <span class="material-icons">lock_open</span>
-                    Change Password
-                </a>
-            </li>
-        </ul>
-        <a class="sidebar-logout" href="login.html"><span><img src="{% static 'img/pwa/open-account-logout.svg'%}" alt=""></span>Cerrar Sesión</a>
-    </div>
-
-    <div class="navbar two-action no-hairline">
-        <div class="navbar-inner d-flex align-items-center">
-            <div class="left">
-                <a href="#" class="link icon-only">
-                    <i class="custom-hamburger">
-                        <span><b></b></span>
-                    </i>
-                </a>
-            </div>
-            <div class="sliding custom-title">Doctor Dashboard</div>
-            <div class="right d-flex">
-                <a href="notifications.html" class="link icon-only"><i class="material-icons">notifications</i></a>
-                <a href="#" data-toggle="dropdown" aria-expanded="true" class="link"><i class="material-icons">more_vert</i></a>
-                <div class="dropdown-menu dropdown-menu-right header_drop_icon">
-                    <a href="doctor-profile.html" class="dropdown-item">My Profile</a>
-                    <a href="profile-settings.html" class="dropdown-item">Settings</a>
-                    <a href="{% url 'users_app:user-logout' %}" class="dropdown-item">Cerrar Sesión</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% include '../includes/doctor/side-menu.html' %}
+    {% include '../includes/header.html' with title="Inicio" only%}
 
     <div class="page-content header-bg pt-0">
         <div class="container">
@@ -113,7 +26,7 @@
                 <div class="doc-info-left">
                     <div class="doctor-img">
                         <a class="doctor-img-profile" href="doctor-dashboard.html">
-                            <img src="img/pwa/doctors/doctor-02.jpg" class="img-fluid img-circle" alt="User Image">
+                            <img src="{% static 'img/pwa/doctors/doctor-02.jpg' %}" class="img-fluid img-circle" alt="User Image">
                         </a>
                     </div>
                     <div class="doc-info-cont">
@@ -122,17 +35,25 @@
                                 <i class="fas fa-ellipsis-v"></i>
                             </div>
                         </div>
-                        <h4 class="doc-name"><a href="doctor-profile.html">Dr. Darren Elder</a></h4>
+                            
+                        <h4 class="doc-name"><a href="doctor-profile.html">
+                        {% if user.sexo == "F" %}
+                            Dra.
+                        {% else %}
+                            Dr.
+                        {% endif %}    
+                            {{user | title}}                        
+                        </a></h4>
                         <p class="doc-speciality">BDS, MDS - Oral & Maxillofacial Surgery</p>
                         <h5 class="doc-department">
-                            <span class="speciality-img"><img src="img/pwa/specialities/specialities-05.png" class="img-fluid" alt="Speciality"></span> Dentist
+                            <span class="speciality-img"><img src="{% static 'img/pwa/specialities/specialities-05.png' %}" class="img-fluid" alt="Speciality"></span> Dentist
                         </h5>
                         <div class="doc-info">
                             <div class="rating">
                                 <span class="doc-experince">15+ Exp</span>
                             </div>
                             <div class="doc-location">
-                                <p>(<i class="fas fa-map-marker-alt"></i> Florida, USA)</p>
+                                <p>(<i class="fas fa-map-marker-alt"></i> {{user.direccion}} {{user.cp}})</p>
                             </div>
                         </div>
                     </div>
@@ -145,7 +66,7 @@
                         <div class="inner-patient-col">
                             <div class="progress-col">
                                  <div class="c100 p80 small">
-                                    <span class="pat-img"><img src="img/pwa/dentist-1.svg" alt="dentist"></span>
+                                    <span class="pat-img"><img src="{% static 'img/pwa/dentist-1.svg' %}" alt="dentist"></span>
                                     <div class="slice">
                                         <div class="bar"></div>
                                         <div class="fill"></div>
@@ -161,7 +82,7 @@
                         <div class="inner-patient-col">
                             <div class="progress-col">
                                  <div class="c100 p40 small">
-                                    <span class="pat-img"><img src="img/pwa/patient.svg" alt="patient"></span>
+                                    <span class="pat-img"><img src="{% static 'img/pwa/patient.svg' %}" alt="patient"></span>
                                     <div class="slice">
                                         <div class="bar"></div>
                                         <div class="fill"></div>

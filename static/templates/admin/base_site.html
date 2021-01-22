@@ -1,0 +1,25 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}AppCovid{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Administración App Covid</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+
+{% block footer %}
+<div id="footer"></div>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Mask Plugin Jquery -->
+<script src="{% static 'js/mask-plugin/jquery.mask.js'%}"></script>
+<script src="{% static 'js/mask-plugin/jquery.mask.min.js'%}"></script>
+
+<!-- JavaScript -->
+<script src="{% static 'js/app.js'%}"></script>
+{% endblock footer %}
+    

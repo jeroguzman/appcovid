@@ -128,7 +128,6 @@ class UserUpdateProfileView(LoginRequiredMixin, UpdateView):
     model = User
     template_name = 'users/update-profile.html'
     form_class = UserUpdateProfileForm
-    success_message = 'yeaa u did it'
     success_url = '/'
     login_url = reverse_lazy('users_app:user-login')
     queryset = User.objects.all()
@@ -142,7 +141,11 @@ class UserUpdateProfileView(LoginRequiredMixin, UpdateView):
         user_to_edit = User.objects.filter(pk=self.kwargs['pk'])
 
         if user_to_edit.exists() or current_user.is_superuser:
-            return super(UserUpdateProfileView, self).form_valid(form)
+            super(UserUpdateProfileView, self).form_valid(form)
+            if self.request.user.is_paciente:
+                return redirect('home_app:home')
+            else:
+                return redirect('home_app:dashboard')
         else:
             return HttpResponseRedirect(
                 reverse('users_app:user-logout')
