@@ -61,7 +61,7 @@ const subscribe = async (reg) => {
     const sub = await reg.pushManager.subscribe(options);
     sendSubData(sub)
 };
- 
+
 const sendSubData = async (subscription) => {
     const browser = navigator.userAgent.match(/(firefox|msie|chrome|safari|trident)/ig)[0].toLowerCase();
     const data = {
@@ -70,7 +70,7 @@ const sendSubData = async (subscription) => {
         browser: browser,
     };
 
-    const res = await fetch('../static/save_information', {
+    const res = await fetch('static/save_information', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
