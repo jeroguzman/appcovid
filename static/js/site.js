@@ -12,15 +12,19 @@ pushForm.addEventListener('submit', async function (e) {
     const body = textarea.value;
     const meta = document.querySelector('meta[name="user_id"]');
     const id = meta ? meta.content : null;
-    ...
     // TODO: make an AJAX request to send notification
 });
 
-const pushForm = document.getElementById('send-push__form');
-const errorMsg = document.querySelector('.error');
 
 pushForm.addEventListener('submit', async function (e) {
-     ...
+    
+    const input = this[0];
+    const textarea = this[1];
+    const button = this[2];
+
+    const head = input.value;
+    const body = textarea.value;
+    const meta = document.querySelector('meta[name="user_id"]'); 
     const id = meta ? meta.content : null;
 
      if (head && body && id) {
