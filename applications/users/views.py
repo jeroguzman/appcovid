@@ -22,32 +22,8 @@ from .forms import(
     
 from .models import User
 
-class UserRegisterView(TemplateView):
-    template_name = "users/register/register.html"
-
-# class UserRegisterPacienteView(FormView):
-#     template_name = 'users/register/register-paciente.html'
-#     form_class = UserRegisterPacienteForm
-#     success_url = '/'
-
-#     def form_valid(self, form):
-#         User.objects.create_user(
-#             form.cleaned_data['telefono'],
-#             form.cleaned_data['correo'],
-#             form.cleaned_data['password1'],
-#             nombre = form.cleaned_data['nombre'],
-#             aPaterno = form.cleaned_data['aPaterno'],
-#             aMaterno = form.cleaned_data['aMaterno'],
-#             edad = form.cleaned_data['edad'],
-#             sexo = form.cleaned_data['sexo'],
-#             direccion = form.cleaned_data['direccion'],
-#             cp = form.cleaned_data['cp'],
-#             avisoPrivacidad = form.cleaned_data['avisoPrivacidad'],
-#         )
-#         return super(UserRegisterView, self).form_valid(form)
-
 class UserRegisterPacienteView(FormView):
-    template_name = 'users/register/register-paciente.html'
+    template_name = 'users/register-paciente.html'
     form_class = UserRegisterPacienteForm
 
     def get_context_data(self, **kwargs):
@@ -58,19 +34,6 @@ class UserRegisterPacienteView(FormView):
         user = form.save()
         login(self.request, user)
         return redirect('home_app:home')
-
-class UserRegisterDoctorView(FormView):
-    template_name = 'users/register/register-doctor.html'
-    form_class = UserRegisterDoctorForm
-
-    def get_context_data(self, **kwargs):
-        kwargs['user_type'] = 'doctor'
-        return super().get_context_data(**kwargs)
-    
-    def form_valid(self, form):
-        user = form.save()
-        login(self.request, user)
-        return redirect('home_app:dashboard')
 
 class UserLoginView(FormView):
     template_name = 'users/login.html'

@@ -1,18 +1,17 @@
 const telefono = $('input[name=telefono], input[name=username]');
-
 const cp = $('input[name=cp]');
 
-telefono.mask('(000)000-0000');
 cp.mask('00000');
-
-
-console.log($('button[type=submit]'));
 
 $('button[type=submit], input[type=submit]').each(function () {
     $(this).click(function () {
         telefono.unmask();
     });
 })
+
+if (telefono.unmask()) {
+    telefono.mask('(000)000-0000');
+}
 
 function alphaOnly(event) {
     var key = event.keyCode;

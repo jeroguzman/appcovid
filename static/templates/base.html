@@ -9,6 +9,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="#3a57c4">
     {% progressive_web_app_meta %}
+    <meta name="vapid-key" content="{{ vapid_key }}">
     <title>App Covid | 
         {% block title %}
         {% endblock title %}
@@ -88,7 +89,7 @@
     <script src='{% static "script.js" %}'></script>
 
     <!-- JavaScript -->
-    <script src="{% static 'js/app.js'%}"></script>
+    <script src="{% static 'js/app2.js'%}"></script>
     
     <!--Notificaciones-->
     <script src="{% static '/js/registerSw.js' %}"></script>

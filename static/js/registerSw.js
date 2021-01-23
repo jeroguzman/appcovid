@@ -55,13 +55,13 @@ const subscribe = async (reg) => {
     const options = {
         userVisibleOnly: true,
         // if key exists, create applicationServerKey property
-        ...(key && {applicationServerKey: urlB64ToUint8Array(key)})
+        ...(key && { applicationServerKey: urlB64ToUint8Array(key) })
     };
 
     const sub = await reg.pushManager.subscribe(options);
     sendSubData(sub)
 };
- 
+
 const sendSubData = async (subscription) => {
     const browser = navigator.userAgent.match(/(firefox|msie|chrome|safari|trident)/ig)[0].toLowerCase();
     const data = {
