@@ -34,8 +34,12 @@ import json
 
 @method_decorator([login_required, paciente_required], name='dispatch')
 class HomeView(LoginRequiredMixin, TemplateView):
-    template_name = 'home/home.html'
-    login_url = reverse_lazy('users_app:user-login')
+    def get(self, request, *args, **kwargs):    
+        login_url = reverse_lazy('users_app:user-login')
+        webpush_settings = getattr(settings, 'WEBPUSH_SETTINGS', {})
+        vapid_key = webpush_settings.get('VAPID_PUBLIC_KEY')
+        user = request.user
+        return render(request, 'home/home.html', {user: user, 'vapid_key': vapid_key})
         
 
 @method_decorator([login_required, doctor_required], name='dispatch')
