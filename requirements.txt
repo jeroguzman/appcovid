@@ -5,9 +5,7 @@ chardet==3.0.4
 cryptography==3.3.1
 csscompressor==0.9.5
 Django==3.1.5
-django-commonstuff==0.9
 django-cors-headers==3.6.0
-django-infopush==1.8
 django-pwa==1.0.10
 http-ece==1.1.0
 idna==2.8
