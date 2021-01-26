@@ -3,7 +3,13 @@
     <div class="close-btn"><span class="material-icons">close</span></div>
     <ul>
         <li>
-            <a class="" href="{% url 'home_app:home' %}">
+            <a class="" href="
+            {% if user.is_doctor %}
+                {% url 'home_app:dashboard' %}
+            {% else %}
+                {% url 'home_app:home' %}
+            {% endif %}
+                ">
                 <span class="material-icons">dashboard</span>
                 Inicio
             </a>

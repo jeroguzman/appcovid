@@ -7,6 +7,6 @@ urlpatterns = [
     path('videollamada/', include('applications.videollamada.urls')),
     re_path('', include('applications.home.urls')),
     re_path('', include('applications.users.urls')),
+    re_path('', include('applications.recetas.urls')),
     path('', include('pwa.urls')),
-    
 ]

@@ -1,13 +1,15 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from .forms import UserRegisterDoctorForm
 from .models import User, Doctor
-admin.site.register(User)
 
 # Register your models here.
 # @admin.register(User)
-# class UserAdmin(admin.ModelAdmin):
-#     class Media:
-#         js = [
-#             'js/mask-plugin/jquery.mask.js', 
-#             'js/mask-plugin/jquery.mask.min.js',
-#             'js/app.js',
-#         ]
+# class EmployeeAdmin(UserAdmin):
+#     fprm = UserRegisterDoctorForm
+#     model = Doctor
+#     ordering = ['correo']
+
+
+admin.site.register(User)
+admin.site.register(Doctor)

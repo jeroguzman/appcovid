@@ -31,6 +31,7 @@ LOCAL_APPS = (
     'applications.videollamada',
     'applications.home',
     'applications.users',
+    'applications.recetas',
 )
 
 THIRD_PARTY_APPS = (

@@ -1,0 +1,106 @@
+{% extends '../base.html' %}
+{% load static %}
+{% load humanize %}
+
+<!-- Estilos adicionales -->
+{% block estilos-adicionales %}
+<!-- <link rel="stylesheet" href="{% static 'css/home/home.css'%}"> -->
+{% endblock estilos-adicionales %}
+
+<!-- Titulo -->
+{% block title %}
+    Inicio
+{% endblock title %}
+    
+<!-- Cuerpo -->
+{% block body %}
+
+<div class="main-wrapper">
+    {% include '../includes/doctor/side-menu.html' %}
+    {% include '../includes/header.html' with title="Inicio" only%}
+
+    <div class="page-content profile-settings">
+
+		<!-- Profile settings -->
+		<div class="container">
+		 	<div class="tab-col">
+			 	<ul class="nav nav-tabs">
+				    <li><a href="#ver-recetas" data-toggle="tab" class="active">Ver Recetas</a></li>
+				    <li><a href="#hacer-receta" data-toggle="tab">Hacer Receta</a></li>
+			  	</ul>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="ver-recetas">
+                    <div class="panel panel-default">
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="patient-appointments-col">	
+                                    <div class="patient-widget">		
+                                        <div class="patient-top-details">
+                                            <div>
+                                                <span class="invoice-id">Receta 1</span>
+                                            </div>
+                                            <div>
+                                                <span class="date-col">14 Nov 2019</span>
+                                            </div>
+                                        </div>	
+                                        <div class="invoice-widget">
+                                            <div class="pat-info-left">
+                                                <div class="patient-img">
+                                                    <a href="#">
+                                                        <img src="{% static 'img/pwa/doctors/doctor-thumb-01.jpg'%}" class="img-fluid" alt="User Image">
+                                                    </a>
+                                                </div>
+                                                <div class="pat-info-cont">
+                                                    <h4 class="pat-name"><a href="#">Dr. Ruby Perrin</a></h4>
+                                                    <div class="patient-details-col">
+                                                        <span class="">Dental</span>
+                                                    </div>
+                                                    <div class="status-col no-shadow">
+                                                        <div class="status-btn">
+                                                            <a href="#" class="btn view-eye"><i><img src="{% static 'img/pwa/icon-awesome-eye.svg'%}" alt=""></i>View</a>
+                                                        </div>
+                                                        <div class="status-btn">
+                                                            <a href="#" class="btn print"><i><img src="{% static 'img/pwa/icon-metro-printer.svg'%}" alt=""></i>Print</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--  Ver Recetas -->
+                
+
+                <div class="tab-pane" id="hacer-receta">
+                        <div class="panel panel-default">
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+                                    {{form.as_p}}
+                                    <button type="submit">Subelo compa</button>
+                                </form>
+                           
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- Hacer Receta -->
+
+            </div>
+
+		</div>
+		<!-- Profile settings -->
+	</div>
+
+</div>
+    <!-- /Main wrapper -->
+
+
+
+{% endblock body %}
