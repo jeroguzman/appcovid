@@ -24,3 +24,4 @@ function alphaOnly(event) {
         || key == 219 // '
     );
 };
+
