@@ -13,7 +13,7 @@ SECRET_KEY = 'x5mx=-frw*(3rq9d8+__2ndj5w#=wy(9qk)4pd8v^ke3e^k7vn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 CORS_ORIGIN_ALLOW_ALL = True
-
+SITE_ID = 1
 
 # Application definition
 
@@ -25,6 +25,7 @@ DJANGO_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django.contrib.sites',
 )
 
 LOCAL_APPS = (
@@ -35,10 +36,10 @@ LOCAL_APPS = (
 )
 
 THIRD_PARTY_APPS = (
-    'bootstrap4',
     'corsheaders',
-    'webpush',
     'pwa',
+    'commonstuff',
+    'push'
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
@@ -129,11 +130,9 @@ USE_TZ = True
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
-WEBPUSH_SETTINGS = {
-   "VAPID_PUBLIC_KEY": "BIAdqGnd66Ets5M7qF4mDOAWxW0INzY9OlVRbCM3TL7Gj-7Z_tvTx7KVtNr83-D6X_bgFQKyHyhQXd8bW7uZxYc",
-   "VAPID_PRIVATE_KEY": "k41zAAVnfMgZw2fQY_3yc35f_M7o7SKTpR7qBbceQtc",
-   "VAPID_ADMIN_EMAIL": "jeroguzman@gmail.com"
-}
+DJANGO_INFOPUSH_VAPID_PUBLIC_KEY = "BIAdqGnd66Ets5M7qF4mDOAWxW0INzY9OlVRbCM3TL7Gj-7Z_tvTx7KVtNr83-D6X_bgFQKyHyhQXd8bW7uZxYc"
+DJANGO_INFOPUSH_VAPID_PRIVATE_KEY = "k41zAAVnfMgZw2fQY_3yc35f_M7o7SKTpR7qBbceQtc"
+DJANGO_INFOPUSH_VAPID_ADMIN_EMAIL = "jeroguzman@gmail.com"
 
 PWA_APP_NAME = 'App Covid' 
 PWA_APP_DESCRIPTION = "Municipio de Nogales 2018-2021" 
