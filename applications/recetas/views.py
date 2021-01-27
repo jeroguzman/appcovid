@@ -3,17 +3,29 @@ from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import(
     FormView,
+    TemplateView
 )
 from .forms import RecetaForm
 from .models import Receta
 
 
 # Create your views here.
-class RecetasView(LoginRequiredMixin, FormView):
+class RecetasPacienteView(LoginRequiredMixin, TemplateView):
     model = Receta
-    template_name = 'recetas/recetas.html'
+    template_name = 'recetas/recetas-paciente.html'
+    success_url = reverse_lazy('recetas_app:recetas-paciente')
+    login_url = reverse_lazy('users_app:user-login')
+
+    def get(self, request):
+        recetas = Receta.objects.filter(paciente_id = self.request.user.id)
+        args = {'recetas': recetas}
+        return render(request, self.template_name, args)
+
+class RecetasDoctorView(LoginRequiredMixin, FormView):
+    model = Receta
+    template_name = 'recetas/recetas-doctor.html'
     form_class = RecetaForm
-    success_url = reverse_lazy('recetas_app:recetas')
+    success_url = reverse_lazy('recetas_app:recetas-doctor')
     login_url = reverse_lazy('users_app:user-login')
 
     def get(self, request):
@@ -43,6 +55,3 @@ class RecetasView(LoginRequiredMixin, FormView):
                 reverse('users_app:user-logout')
             )
 
-        # def receta(request):
-        #     obj = Receta.objects.all()
-        #     return render(request, self.template_name ,{'obj': obj})

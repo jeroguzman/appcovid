@@ -1,0 +1,85 @@
+{% extends '../base.html' %}
+{% load static %}
+{% load humanize %}
+
+<!-- Titulo -->
+{% block title %}
+    Recetas
+{% endblock title %}
+    
+<!-- Cuerpo -->
+{% block body %}
+
+<div class="main-wrapper">
+    {% include '../includes/paciente/side-menu.html' %}
+    {% include '../includes/header.html' with title="Tus Recetas" only%}
+
+    <div class="page-content profile-settings">
+
+		<!-- Profile settings -->
+		<div class="container">
+
+            <div class="tab-content">            
+
+                <div class="tab-pane active" id="ver-recetas">
+                    <div class="panel panel-default">
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="patient-appointments-col">	
+                                    
+                                    {% for receta in recetas %}
+                                    <div class="patient-widget">		
+                                        <div class="patient-top-details">
+                                            <div>
+                                                <span class="invoice-id">Receta {{receta.id}}</span>
+                                            </div>
+                                            <div>
+                                                <span class="date-col">{{receta.fecha}}</span>
+                                            </div>
+                                        </div>	
+                                        <div class="invoice-widget">
+                                            <div class="pat-info-left">
+                                                <div class="patient-img">
+                                                    <a href="#">
+                                                        <img src="{% static 'img/pwa/doctors/doctor-thumb-01.jpg'%}" class="img-fluid" alt="User Image">
+                                                    </a>
+                                                </div>
+                                                <div class="pat-info-cont">
+                                                    <h4 class="pat-name"><a href="#">{{receta.paciente.user.nombre}} {{receta.paciente.user.aPaterno}} {{receta.paciente.user.aMaterno}}</a></h4>
+                                                    <div class="patient-details-col">
+                                                        <span class="">{{receta.contenido}}</span>
+                                                    </div>
+                                                    <div class="status-col no-shadow">
+                                                        <div class="status-btn">
+                                                            <a href="#" class="btn view-eye"><i><img src="{% static 'img/pwa/icon-awesome-eye.svg'%}" alt=""></i>View</a>
+                                                        </div>
+                                                        <div class="status-btn">
+                                                            <a href="#" class="btn print"><i><img src="{% static 'img/pwa/icon-metro-printer.svg'%}" alt=""></i>Print</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- Receta -->
+                                    {% endfor %}
+
+                                </div>
+                            </div>                                 
+                        </div>
+                    </div>
+                </div><!--  Ver Recetas -->
+                
+
+
+            </div>
+
+		</div>
+		<!-- Profile settings -->
+	</div>
+
+</div>
+    <!-- /Main wrapper -->
+
+
+
+{% endblock body %}

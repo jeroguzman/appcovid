@@ -17,7 +17,13 @@
 
 <div class="main-wrapper">
 
-    {% include '../includes/paciente/side-menu.html' %}
+    
+    {% if user.is_paciente %}
+    {% include '../includes/paciente/side-menu.html' %} 
+    {% else %}
+    {% include '../includes/doctor/side-menu.html' %}
+    {% endif %}
+        
     {% include '../includes/header.html' with title="Inicio" only%}
 
     <div class="page-content header-bg pt-0">
