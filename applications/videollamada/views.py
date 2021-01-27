@@ -10,11 +10,11 @@ def consultorios(request):
 class AgoraVideoCall(View):
     app_id=''
     channel = ''
-    permission_class = 'AllowAny'
+    permission_class = 'IsAuthenticated'
     channel_end_url = '/'
     title = 'Videollamada Medica'
 
-    def get_permission(self,request,permission_class):
+    def get_permission(self, request, permission_class):
         if permission_class == 'AllowAny':
             return True
         elif permission_class == 'IsAuthenticated':
@@ -56,18 +56,9 @@ class AgoraVideoCall(View):
         else:
             if not self.checkAppID(self.app_id):
                 return HttpResponse('Programming Error: No App ID')
-            elif not self.get_permissions(request):
+            elif not self.get_permission(request):
                 return HttpResponse('User Permission Error: No Permission')
             elif not self.checkChannel(request,self.channel):
                 return HttpResponse('Programming Error: No Channel Name')
             return HttpResponse('Unknown Error')
         
-
-# allowed_permissions = ['AllowAny','IsAuthenticated','IsAdmin']
-
-class Agora(AgoraVideoCall):
-    app_id=''
-    channel = ''
-    permission_class = 'AllowAny'
-    channel_end_url = '/success/'
-    title = 'Agora Demo'
