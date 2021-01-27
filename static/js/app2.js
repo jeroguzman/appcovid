@@ -1,7 +1,9 @@
 const telefono = $('input[name=telefono], input[name=username]');
 const cp = $('input[name=cp]');
+const fecha = $('#id_fecha')
 
 cp.mask('00000');
+fecha.mask('00/00/0000')
 
 $('button[type=submit], input[type=submit]').each(function () {
     $(this).click(function () {
