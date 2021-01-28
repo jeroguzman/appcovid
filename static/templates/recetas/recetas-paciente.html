@@ -6,6 +6,11 @@
 {% block title %}
     Recetas
 {% endblock title %}
+
+<!-- Estilos adicionales -->    
+{% block estilos-adicionales %}
+<link rel="stylesheet" href="{% static 'css/recetas/recetas.css'%}">
+{% endblock estilos-adicionales %}      
     
 <!-- Cuerpo -->
 {% block body %}
@@ -45,13 +50,21 @@
                                                     </a>
                                                 </div>
                                                 <div class="pat-info-cont">
-                                                    <h4 class="pat-name"><a href="#">{{receta.paciente.user.nombre}} {{receta.paciente.user.aPaterno}} {{receta.paciente.user.aMaterno}}</a></h4>
+                                                    <h4 class="pat-name"><a href="#">
+                                                        
+                                                        {% if receta.doctor.sexo == "F" %}
+                                                            Dra.
+                                                        {% else %}
+                                                            Dr.
+                                                        {% endif %}
+                                                        {{receta.doctor}}
+                                                    </a></h4>
                                                     <div class="patient-details-col">
                                                         <span class="">{{receta.contenido}}</span>
                                                     </div>
                                                     <div class="status-col no-shadow">
                                                         <div class="status-btn">
-                                                            <a href="#" class="btn view-eye"><i><img src="{% static 'img/pwa/icon-awesome-eye.svg'%}" alt=""></i>View</a>
+                                                            <a href="#" class="btn view-eye"><i class="fas fa-envelope"></i> Enviar por correo</a>
                                                         </div>
                                                         <div class="status-btn">
                                                             <a href="#" class="btn print"><i><img src="{% static 'img/pwa/icon-metro-printer.svg'%}" alt=""></i>Print</a>

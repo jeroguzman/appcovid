@@ -6,7 +6,12 @@
 {% block title %}
     Recetas
 {% endblock title %}
-    
+
+<!-- Estilos adicionales -->    
+{% block estilos-adicionales %}
+<link rel="stylesheet" href="{% static 'css/recetas/recetas.css'%}">
+{% endblock estilos-adicionales %}     
+
 <!-- Cuerpo -->
 {% block body %}
 
@@ -28,7 +33,7 @@
             <div class="tab-content">
 
 
-                
+                <!-- Hacer Receta -->
                 <div class="tab-pane active" id="hacer-receta">
                     <div class="panel panel-default">
                         <div id="collapseOne" class="panel-collapse collapse in">
@@ -86,28 +91,17 @@
                             </div>
                         </div>
                     </div>
-                </div>           <!-- Hacer Receta -->
+                </div>           
+                <!-- Hacer Receta -->     
 
-
-
-
-
-
-
-
-
-                
-
-
-                
-     
-
+                <!--  Ver Recetas -->
                 <div class="tab-pane" id="ver-recetas">
                     <div class="panel panel-default">
                         <div id="collapseTwo" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div class="patient-appointments-col">	
                                     
+                                    <!-- Receta -->
                                     {% for receta in recetas %}
                                     <div class="patient-widget">		
                                         <div class="patient-top-details">
@@ -132,7 +126,7 @@
                                                     </div>
                                                     <div class="status-col no-shadow">
                                                         <div class="status-btn">
-                                                            <a href="#" class="btn view-eye"><i><img src="{% static 'img/pwa/icon-awesome-eye.svg'%}" alt=""></i>View</a>
+                                                            <a href="#" class="btn view-eye"><i class="fas fa-envelope"></i> Enviar por correo</a>
                                                         </div>
                                                         <div class="status-btn">
                                                             <a href="#" class="btn print"><i><img src="{% static 'img/pwa/icon-metro-printer.svg'%}" alt=""></i>Print</a>
@@ -141,14 +135,16 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> <!-- Receta -->
+                                    </div> 
                                     {% endfor %}
+                                    <!-- Receta -->
 
                                 </div>
                             </div>                                 
                         </div>
                     </div>
-                </div><!--  Ver Recetas -->
+                </div>
+                <!--  Ver Recetas -->
                 
 
 

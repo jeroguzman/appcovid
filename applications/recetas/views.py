@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from applications.home.decorators import paciente_required, doctor_required
 from django.views.generic import(
     FormView,
     TemplateView
@@ -10,6 +13,7 @@ from .models import Receta
 
 
 # Create your views here.
+@method_decorator([login_required, paciente_required], name='dispatch')
 class RecetasPacienteView(LoginRequiredMixin, TemplateView):
     model = Receta
     template_name = 'recetas/recetas-paciente.html'
@@ -21,6 +25,7 @@ class RecetasPacienteView(LoginRequiredMixin, TemplateView):
         args = {'recetas': recetas}
         return render(request, self.template_name, args)
 
+@method_decorator([login_required, doctor_required], name='dispatch')
 class RecetasDoctorView(LoginRequiredMixin, FormView):
     model = Receta
     template_name = 'recetas/recetas-doctor.html'
@@ -30,7 +35,7 @@ class RecetasDoctorView(LoginRequiredMixin, FormView):
 
     def get(self, request):
         form = RecetaForm()
-        recetas = Receta.objects.all()
+        recetas = Receta.objects.filter(doctor_id = self.request.user.id)
         args = {'form':form, 'recetas': recetas}
         return render(request, self.template_name, args)
 
@@ -49,7 +54,7 @@ class RecetasDoctorView(LoginRequiredMixin, FormView):
             )
             receta.save()
 
-            return super(RecetasView, self).form_valid(form)
+            return super(RecetasDoctorView, self).form_valid(form)
         else:
             return HttpResponseRedirect(
                 reverse('users_app:user-logout')
