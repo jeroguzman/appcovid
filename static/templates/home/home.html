@@ -52,28 +52,17 @@
             </div>
 
             <div class="patient-details">
-                <div class="inner-patient-detaials">
-                    <div class="patient-col">
-                        <img src='{% static "/img/pwa/imagenvideo.jpg" %}'>
+                <div class="patient-col">
+                    <div class="inner-patient-col">
+                        <a href="{% url 'videollamada:consultorios' %}" class="btn"><img src='{% static "/img/pwa/imagenvideo.png" %}'></a>
                     </div>
-                    
-                    <div class="patient-col">
-                        <img src='{% static "/img/pwa/saludyb.png" %}'>
+                </div>
+                <div class="patient-col">
+                    <div class="inner-patient-col">
+                        <a href="#" class="btn"><img src='{% static "/img/pwa/saludyb.png" %}'></a>
                     </div>
                 </div>
             </div>
-
-            <div class="appointments-details">
-                <div class="inner-appointment">
-                    <div class="appointment-col">
-                        <a href="{% url 'videollamada:consultorios' %}" class="btn">Consultorios Videollamada</a>
-                    </div>
-                    <div class="appointment-col">
-                        <a href="#" class="btn">Salud y Bienestar</a>
-                    </div>
-                </div>
-            </div>
-            
         </div>
     </div>
 </div>
