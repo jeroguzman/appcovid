@@ -102,9 +102,14 @@
                                                                         </div>
                                                                     </div>
                                                                     </div>
-                                                                </li>                                                    
+                                                                </li> 
+                                                                <h1>{{form.paciente.user.correo}}</h1>
+                                                                {{receta.paciente.user.nombre}}
+                                                                {{paciente_id}}
+                                                                {{form.correo_paciente}}
+                                                                <input type="text" name="correo-paciente" value="{{receta.paciente.user.correo}}">                                                   
                                                                 <li class="bottom-button">
-                                                                    <button type="submit" class="btn">Subir Receta</button>
+                                                                    <button type="submit" class="btn" href="">Enviar Receta</button>
                                                                 </li>
                                                               </ul>
                                                         </form>

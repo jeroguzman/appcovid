@@ -126,6 +126,12 @@ USE_L10N = True
 
 USE_TZ = True
 
+# EMAIL SETTINGS
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'correoappcovid@gmail.com' 
+EMAIL_HOST_PASSWORD = 'Appcovid21'
+EMAIL_PORT = 587
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/

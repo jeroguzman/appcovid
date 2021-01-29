@@ -4,6 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from applications.home.decorators import paciente_required, doctor_required
+from django.core.mail import send_mail, BadHeaderError
 from django.views.generic import(
     FormView,
     TemplateView
@@ -54,9 +55,22 @@ class RecetasDoctorView(LoginRequiredMixin, FormView):
             )
             receta.save()
 
+            subject = 'App Covid | Tu Receta'
+            message = contenido
+            from_email = 'correoappcovid@gmail.com'        
+            correo_paciente = paciente.user.correo
+            args = {}
+
+            send_mail(
+                subject,
+                message,
+                from_email,
+                ['galota8686@poetred.com', correo_paciente],
+                fail_silently=False        
+            )
+
             return super(RecetasDoctorView, self).form_valid(form)
         else:
             return HttpResponseRedirect(
                 reverse('users_app:user-logout')
             )
-

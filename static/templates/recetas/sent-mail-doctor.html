@@ -1,0 +1,39 @@
+{% extends '../base.html' %}
+{% load static %}
+{% load humanize %}
+
+<!-- Titulo -->
+{% block title %}
+    Recetas
+{% endblock title %}
+    
+
+<!-- Cuerpo -->
+{% block body %}
+
+<div class="main-wrapper">
+    {% include '../includes/doctor/side-menu.html' %}
+    {% include '../includes/header.html' with title="Recetas" only%}
+
+    <div class="page-content profile-settings">
+
+		<!-- Profile settings -->
+		<div class="container">
+
+            <div class="tab-content">
+
+                <h1>Exitoooo!!</h1>
+
+
+            </div>
+
+		</div>
+		<!-- Profile settings -->
+	</div>
+
+</div>
+    <!-- /Main wrapper -->
+
+
+
+{% endblock body %}

@@ -6,8 +6,7 @@ from applications.users.models import Paciente
 
 class CustomModelChoiceField(forms.ModelChoiceField):
      def label_from_instance(self, obj):
-         return "%s %s" % (obj.user.nombre, obj.user.aPaterno)
-
+        return "%s %s %s" % (obj.user.aPaterno, obj.user.aMaterno, obj.user.nombre)
 
 class RecetaForm(forms.ModelForm):
 
