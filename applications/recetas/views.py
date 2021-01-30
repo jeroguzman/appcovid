@@ -1,14 +1,18 @@
-from django.shortcuts import render
-from django.urls import reverse_lazy, reverse
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import EmailMessage, send_mail
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.template.loader import get_template
+from django.urls import reverse_lazy, reverse
 from django.utils.decorators import method_decorator
-from applications.home.decorators import paciente_required, doctor_required
-from django.core.mail import send_mail, BadHeaderError
 from django.views.generic import(
     FormView,
-    TemplateView
+    TemplateView,
+    View,
 )
+from applications.home.decorators import paciente_required, doctor_required
+from appcovid.utils import render_to_pdf
 from .forms import RecetaForm
 from .models import Receta
 
@@ -56,10 +60,38 @@ class RecetasDoctorView(LoginRequiredMixin, FormView):
             receta.save()
 
             subject = 'App Covid | Tu Receta'
-            message = contenido
+            message = 'Adjuntamos un pdf con tu receta'
             from_email = 'correoappcovid@gmail.com'        
             correo_paciente = paciente.user.correo
-            args = {}
+           
+           
+            # ctx = {
+            #     "doctor": receta.doctor,
+            #     "fecha" : receta.fecha,
+            #     "paciente": receta.paciente.user.nombre,
+            #     "contenido": receta.contenido,
+            # }
+            # pdf = render_to_pdf('recetas/receta-pdf.html', ctx)
+
+            # email = EmailMessage(
+            #     subject,
+            #     message,
+            #     from_email,
+            #     ['galota8686@poetred.com', correo_paciente],
+            # )
+
+            # if pdf:
+            #     response = HttpResponse(pdf, content_type='application/pdf')
+            #     filename = "Receta_%s" %(receta.paciente.user.nombre)
+            #     content = "inline; filename=%s" %(filename)
+            #     response['Content-Disposition'] = content
+            #     email.attach_file(response)
+            #     email.send()
+            # else:
+            #     return HttpResponse("No se encontro la receta")
+
+                
+            #email.attach_file('C:\\Users\\genesisbell\\Documents\\Programacion\\Proyectos\\PiticSoft\\Django\\appcovid\\static\\img\\logo.png')
 
             send_mail(
                 subject,
@@ -74,3 +106,23 @@ class RecetasDoctorView(LoginRequiredMixin, FormView):
             return HttpResponseRedirect(
                 reverse('users_app:user-logout')
             )
+
+class RecetaPDF(View):
+    def get(self, request, *args, **kwargs):
+        template = get_template('recetas/receta-pdf.html')
+        receta = Receta.objects.get(id = request.GET.get("id"))
+        ctx = {
+            "doctor": receta.doctor,
+            "fecha" : receta.fecha,
+            "paciente": receta.paciente.user.nombre,
+            "contenido": receta.contenido,
+        }
+        html = template.render(ctx)
+        pdf = render_to_pdf('recetas/receta-pdf.html', ctx)
+        if pdf:
+            response = HttpResponse(pdf, content_type='application/pdf')
+            filename = "Receta_%s" %(receta.paciente.user.nombre)
+            content = "inline; filename=%s" %(filename)
+            response['Content-Disposition'] = content
+            return response
+        return HttpResponse("No se encontro la receta")

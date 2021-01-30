@@ -10,10 +10,6 @@ class CustomModelChoiceField(forms.ModelChoiceField):
 
 class RecetaForm(forms.ModelForm):
 
-    # fecha = forms.DateField(
-    #     input_formats=settings.DATE_INPUT_FORMATS,
-    # )
-
     paciente = CustomModelChoiceField(queryset = Paciente.objects.all())
 
     class Meta:
