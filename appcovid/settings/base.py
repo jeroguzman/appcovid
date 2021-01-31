@@ -33,6 +33,7 @@ LOCAL_APPS = (
     'applications.home',
     'applications.users',
     'applications.recetas',
+    'applications.blog',
 )
 
 THIRD_PARTY_APPS = (

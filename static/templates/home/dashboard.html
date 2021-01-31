@@ -35,12 +35,6 @@
                         </a>
                     </div>
                     <div class="doc-info-cont">
-                        <div class="toggle-icon-doctor">
-                            <div class="inner-toggle-icon">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </div>
-                        </div>
-                            
                         <h4 class="doc-name"><a href="doctor-profile.html">
                         {% if user.sexo == "F" %}
                             Dra.
@@ -49,13 +43,13 @@
                         {% endif %}    
                             {{user | title}}                 
                         </a></h4>
-                        <p class="doc-speciality">BDS, MDS - Oral & Maxillofacial Surgery</p>
+                        <p class="doc-speciality">Cédula Prof.</p>
                         <h5 class="doc-department">
-                            <span class="speciality-img"><img src="{% static 'img/pwa/specialities/specialities-05.png' %}" class="img-fluid" alt="Speciality"></span> Dentist
+                            Especialidad
                         </h5>
                         <div class="doc-info">
                             <div class="rating">
-                                <span class="doc-experince">15+ Exp</span>
+                                <span class="doc-experince">Otra Informacion</span>
                             </div>
                             <div class="doc-location">
                                 <p>(<i class="fas fa-map-marker-alt"></i> {{user.direccion}} {{user.cp}})</p>
@@ -74,23 +68,11 @@
                     </div>
                     <div class="patient-col">
                         <div class="inner-patient-col">
-                            <a href="{% url 'recetas_app:recetas-doctor' %}" ><<img src='{% static "img/pwa/miconsultorio.png" %}'></a>
+                            <a href="{% url 'users_app:user-profile' %}" ><<img src='{% static "img/pwa/mi-perfil.png" %}'></a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="appointments-details">
-                <div class="inner-appointment">
-                    <div class="appointment-col">
-                        <a href="#" class="btn">Upcoming <br>Appointments</a>
-                    </div>
-                    <div class="appointment-col">
-                        <a href="#" class="btn">Upcoming <br>Appointments</a>
-                    </div>
-                </div>
-            </div>
-            
         </div>
     </div>
 

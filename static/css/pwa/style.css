@@ -6049,3 +6049,69 @@ ul li span.trash-icon {
 		display: block;
 	}
 }
+
+
+
+
+.page-section {
+	margin-top: 5rem;
+	margin-bottom: 5rem;
+  }
+
+  .section-heading {
+	text-transform: uppercase;
+  }
+  
+  .section-heading .section-heading-upper {
+	display: block;
+	font-size: 1rem;
+	font-weight: 800;
+	padding-bottom:.5rem;
+  
+  }
+  
+  .section-heading .section-heading-lower {
+	display: block;
+	font-size: 3rem;
+	font-weight: 100;
+  }
+  
+  
+  .section-heading .section-heading-under {
+	display: block;
+	font-size: 1rem;
+	text-transform: none;
+	font-weight: 300;
+	margin-top:.5rem;
+  }
+
+  .cta .cta-innerv {
+	position: relative;
+	padding: 3rem;
+	margin: 0.5rem;
+	background-color: rgba(255, 255, 255, 0.85);
+  }
+
+  .cta {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+	background-color: #8C2D2E;
+  }
+  
+  .cta .cta-inner {
+	position: relative;
+	padding: 3rem;
+	margin: 0.5rem;
+	background-color: rgba(255, 255, 255, 0.85);
+  }
+  
+  .cta .cta-inner:before {
+	border-radius: 0.5rem;
+	content: '';
+	position: absolute;
+	top: -0.5rem;
+	bottom: -0.5rem;
+	left: -0.5rem;
+	right: -0.5rem;
+	border: 0.25rem solid rgba(255, 255, 255, 0.85);
+  }

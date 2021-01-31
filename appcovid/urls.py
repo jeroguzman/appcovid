@@ -12,6 +12,7 @@ urlpatterns = [
     re_path('', include('applications.home.urls')),
     re_path('', include('applications.users.urls')),
     re_path('', include('applications.recetas.urls')),
+    path('blog/', include('applications.blog.urls')),
     path('', include('pwa.urls')),
     url(r'^push/', include('push.urls')),
     url(r'^service-worker.js$', cache_page(1 if settings.DEBUG else 86400)(TemplateView.as_view(
