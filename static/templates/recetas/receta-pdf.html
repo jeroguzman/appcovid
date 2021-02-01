@@ -30,7 +30,6 @@
 
             .doctor{
                 font-size: 24px;
-                font-weight: bolder;
             }
 
             .content{
@@ -79,11 +78,19 @@
         <div class="header">
             <table class="header">
                 <tr>
+                    
                     <th style="text-align: left; padding-left: 15px;"><img class="logo" src="https://i.ibb.co/C0gVpBQ/logo.png" alt="logo"></th>
                     <th style="text-align: right; padding-right: 15px;">
                         <div class="doctor">
-                            Dr. {{doctor}} <br>
-                            <i>cedula</i>
+                            <strong>
+                            {% if doctor.sexo == "M" %}
+                                Dr.
+                            {% else%}
+                                Dra.
+                            {% endif %}
+                                
+                            {{doctor}}</strong> <br>
+                            Ced. Prof. <i>{{doctor.doctor.cedula}}</i>
                         </div>
                     </th>
                 </tr>
@@ -100,7 +107,7 @@
             <div class="paciente">
                 Nombre del Paciente:
                 <strong>
-                     {{paciente}}
+                     {{paciente.user.nombre}} {{paciente.user.aPaterno}} {{paciente.user.aMaterno}}
                 </strong>
             </div>
             <div class="receta">
@@ -113,6 +120,9 @@
 
             </div>
 
+            <img src="{{doctor.doctor.firma}}" alt="">
+    
+            {{doctor.doctor.firma}}
         </div>
 
 

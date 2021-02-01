@@ -1,6 +1,6 @@
+from django.core.mail import EmailMultiAlternatives
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.mail import EmailMessage, send_mail, EmailMultiAlternatives
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template.loader import get_template
@@ -68,7 +68,7 @@ class RecetasDoctorView(LoginRequiredMixin, FormView):
             ctx = {
                 "doctor": receta.doctor,
                 "fecha" : receta.fecha,
-                "paciente": receta.paciente.user.nombre,
+                "paciente": receta.paciente,
                 "contenido": receta.contenido,
             }
             pdf = render_to_pdf('recetas/receta-pdf.html', ctx)
@@ -95,7 +95,7 @@ class RecetaPDF(View):
         ctx = {
             "doctor": receta.doctor,
             "fecha" : receta.fecha,
-            "paciente": receta.paciente.user.nombre,
+            "paciente": receta.paciente,
             "contenido": receta.contenido,
         }
         html = template.render(ctx)

@@ -32,7 +32,14 @@
                             <div class="panel-body">
                                 <div class="patient-appointments-col">	
                                     
+                                    {% if not recetas %}
+                                    <div class="message">
+                                        Aún no tiene recetas. Las recetas que le elabore algún doctor aparecerán en este apartado.
+                                    </div>                                   
+                                    {% endif %}
+
                                     {% for receta in recetas %}
+                                            
                                     <div class="patient-widget">		
                                         <div class="patient-top-details">
                                             <div>

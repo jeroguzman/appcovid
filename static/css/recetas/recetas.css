@@ -1,3 +1,11 @@
 .fa-envelope{
     padding-top: 5px;
 }
+
+.message{
+    text-align: center;
+    margin: auto;
+    color: #adaaaa;
+    font-size: 20px;
+    width: 200px;
+}

@@ -40,4 +40,5 @@ class Paciente(models.Model):
 
 class Doctor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    universidad = models.CharField(max_length=120, null=True, blank=True)
+    cedula = models.PositiveIntegerField(null=True)
+    firma = models.ImageField(upload_to='staticfiles/doctor/firmas', null=True)
