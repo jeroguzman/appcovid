@@ -3,52 +3,121 @@
     <head>
         <title>Title</title>
         <style type="text/css">
-            body {
-                font-weight: 200;
-                font-size: 14px;
+            @page{
+                @frame footer_frame{
+                    -pdf-frame-content: footer;
+                    width: 512pt; bottom: -95pt; height: 200px;
+                }
             }
-            .header {
+
+            body{
+                padding: 0 !important;
+                margin: 0 !important;
+                border: 0 !important;
+                outline: 0 !important;
+            }
+
+            .header{
+                margin: 0;
+                background-color: #9A3237;
+                color: white;
+                padding: 10px 0;
+            }
+
+            .logo{
+                width: 120px;
+            }
+
+            .doctor{
+                font-size: 24px;
+                font-weight: bolder;
+            }
+
+            .content{
+                margin: 20px 60px;
+            }
+
+            .fecha{
                 font-size: 20px;
-                font-weight: 100;
-                text-align: center;
-                color: #007cae;
+                text-align: right;
             }
-            .title {
-                font-size: 22px;
-                font-weight: 100;
-               /* text-align: right;*/
-               padding: 10px 20px 0px 20px;  
+
+            .paciente{
+                font-size: 20px;
             }
-            .title span {
-                color: #007cae;
+
+            .receta{
+                border: 1px solid black;
             }
-            .details {
-                padding: 10px 20px 0px 20px;
-                text-align: left !important;
-                /*margin-left: 40%;*/
+
+            .contenido-header{
+                background-color: #9A3237;
+                color: white;
+                padding: 10px;
+                font-weight: bolder;
+                font-size: 20px;
             }
-            .hrItem {
-                border: none;
-                height: 1px;
-                /* Set the hr color */
-                color: #333; /* old IE */
-                background-color: #fff; /* Modern Browsers */
+
+            .contenido{
+                padding: 10px;
+                font-size: 16px;
+
             }
+
+            #footer{
+                background-color: #9A3237;
+                font-size: 50px;
+                color: #9A3237;
+            }
+
+
+
+            
         </style>
     </head>
     <body>
-        <div class='wrapper'>
-            <div class='header'>
-                <p class='title'>Receta # {{receta_id}}</p>
-            </div>
-        <div>
-        <div class='details'>
-            Doctor: {{doctor}} <br>
-            Fecha: {{fecha}} <br>
-            Paciente: {{paciente}} <br>
-            Contenido: {{contenido}} <br>
-            <hr class='hrItem' />
+        <div class="header">
+            <table class="header">
+                <tr>
+                    <th style="text-align: left; padding-left: 15px;"><img class="logo" src="https://i.ibb.co/C0gVpBQ/logo.png" alt="logo"></th>
+                    <th style="text-align: right; padding-right: 15px;">
+                        <div class="doctor">
+                            Dr. {{doctor}} <br>
+                            cedula
+                        </div>
+                    </th>
+                </tr>
+            </table>
         </div>
-    </div>
+
+        <div class="content">
+            <div class="fecha">
+                Fecha:
+                <strong>
+                     {{fecha}}
+                </strong>
+            </div>
+            <div class="paciente">
+                Nombre del Paciente:
+                <strong>
+                     {{paciente}}
+                </strong>
+            </div>
+            <div class="receta">
+                <div class="contenido-header">
+                    Receta:
+                </div>
+                <div class="contenido">
+                    {{contenido}}
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div id="footer">
+            <p>a</p>
+        </div>
     </body>
 </html>
