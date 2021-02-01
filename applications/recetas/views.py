@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.mail import EmailMessage, send_mail
+from django.core.mail import EmailMessage, send_mail, EmailMultiAlternatives
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template.loader import get_template
@@ -65,41 +65,22 @@ class RecetasDoctorView(LoginRequiredMixin, FormView):
             correo_paciente = paciente.user.correo
            
            
-            # ctx = {
-            #     "doctor": receta.doctor,
-            #     "fecha" : receta.fecha,
-            #     "paciente": receta.paciente.user.nombre,
-            #     "contenido": receta.contenido,
-            # }
-            # pdf = render_to_pdf('recetas/receta-pdf.html', ctx)
+            ctx = {
+                "doctor": receta.doctor,
+                "fecha" : receta.fecha,
+                "paciente": receta.paciente.user.nombre,
+                "contenido": receta.contenido,
+            }
+            pdf = render_to_pdf('recetas/receta-pdf.html', ctx)
 
-            # email = EmailMessage(
-            #     subject,
-            #     message,
-            #     from_email,
-            #     ['galota8686@poetred.com', correo_paciente],
-            # )
-
-            # if pdf:
-            #     response = HttpResponse(pdf, content_type='application/pdf')
-            #     filename = "Receta_%s" %(receta.paciente.user.nombre)
-            #     content = "inline; filename=%s" %(filename)
-            #     response['Content-Disposition'] = content
-            #     email.attach_file(response)
-            #     email.send()
-            # else:
-            #     return HttpResponse("No se encontro la receta")
-
-                
-            #email.attach_file('C:\\Users\\genesisbell\\Documents\\Programacion\\Proyectos\\PiticSoft\\Django\\appcovid\\static\\img\\logo.png')
-
-            send_mail(
+            email = EmailMultiAlternatives(
                 subject,
                 message,
                 from_email,
                 ['galota8686@poetred.com', correo_paciente],
-                fail_silently=False        
             )
+            email.attach("Receta_%s.pdf" %(receta.paciente.user.nombre), pdf, "appliaction/pdf")
+            email.send()
 
             return super(RecetasDoctorView, self).form_valid(form)
         else:

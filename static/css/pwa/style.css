@@ -448,6 +448,7 @@ body.overlay-body:before {
 }
 .side-menu ul li .material-icons {
 	font-size: 15px;
+	background-color: #ffc90f;
 }
 .side-menu .close-btn {
 	position: absolute;
