@@ -97,6 +97,7 @@ class RecetaPDF(View):
             "fecha" : receta.fecha,
             "paciente": receta.paciente,
             "contenido": receta.contenido,
+            "firma": receta.doctor.doctor.firma.path,
         }
         html = template.render(ctx)
         pdf = render_to_pdf('recetas/receta-pdf.html', ctx)
