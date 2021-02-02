@@ -11,7 +11,7 @@ ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', '178.128.76.91', '192.168.1.173']
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [str(BASE_DIR / 'static')]
-#STATIC_ROOT = 'static/'
+#STATIC_ROOT = 'staticfiles/'
 
 
 
