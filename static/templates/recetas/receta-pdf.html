@@ -3,7 +3,7 @@
     <head>
         <title>Title</title>
         <style type="text/css">
-            @page{
+            @page {
                 @frame footer_frame{
                     -pdf-frame-content: footer;
                     width: 512pt; bottom: -95pt; height: 200px;
@@ -63,6 +63,22 @@
 
             }
 
+            .firma{
+                height: 150px;
+            }
+
+            .linea-firma{
+                margin: 0 200px;
+                border-bottom-color: red;
+                border-top-color: red;
+                border-color: red;
+            }
+
+            .nombre-firma{
+                font-weight: bolder;
+                font-size: 16px;
+            }
+
             #footer{
                 background-color: #9A3237;
                 font-size: 50px;
@@ -78,7 +94,6 @@
         <div class="header">
             <table class="header">
                 <tr>
-                    
                     <th style="text-align: left; padding-left: 15px;"><img class="logo" src="https://i.ibb.co/C0gVpBQ/logo.png" alt="logo"></th>
                     <th style="text-align: right; padding-right: 15px;">
                         <div class="doctor">
@@ -120,9 +135,21 @@
 
             </div>
 
-            <img src="{{doctor.doctor.firma}}" alt="">
+            <center>
+                <img class="firma" src="{{firma}}" alt="firma">
+                <hr class="linea-firma">
+                <div class="nombre-firma">
+                    {% if doctor.sexo == "M" %}
+                    Dr.
+                    {% else%}
+                    Dra.
+                    {% endif %}
+                    
+                    {{doctor}}
+                </div>
+            </center>
+
     
-            {{doctor.doctor.firma}}
         </div>
 
 
