@@ -28,10 +28,6 @@
                 width: 120px;
             }
 
-            .doctor{
-                font-size: 24px;
-            }
-
             .content{
                 margin: 20px 60px;
             }
@@ -69,9 +65,8 @@
 
             .linea-firma{
                 margin: 0 200px;
-                border-bottom-color: red;
-                border-top-color: red;
-                border-color: red;
+                background-color: black;
+                font-size: 1px;
             }
 
             .nombre-firma{
@@ -94,9 +89,10 @@
         <div class="header">
             <table class="header">
                 <tr>
-                    <th style="text-align: left; padding-left: 15px;"><img class="logo" src="https://i.ibb.co/C0gVpBQ/logo.png" alt="logo"></th>
-                    <th style="text-align: right; padding-right: 15px;">
-                        <div class="doctor">
+                    <th style="text-align: left; padding-left: 20px;"><img class="logo" src="https://i.ibb.co/C0gVpBQ/logo.png" alt="logo"></th>
+                    <th style="font-size: 34px;">Receta</th>
+                    <th style="text-align: right; padding-right: 40px;">
+                        <div style="font-size: 24px; padding: 0;">
                             <strong>
                             {% if doctor.sexo == "M" %}
                                 Dr.
@@ -105,6 +101,8 @@
                             {% endif %}
                                 
                             {{doctor}}</strong> <br>
+                        </div>
+                        <div style="font-size: 20px; padding: 0; font-weight: lighter;">
                             Ced. Prof. <i>{{doctor.doctor.cedula}}</i>
                         </div>
                     </th>
@@ -127,7 +125,7 @@
             </div>
             <div class="receta">
                 <div class="contenido-header">
-                    Receta:
+                    Medicamentos e indicaciones:
                 </div>
                 <div class="contenido">
                     {{contenido}}
@@ -135,9 +133,14 @@
 
             </div>
 
+            <br>
+            <br>
+
             <center>
                 <img class="firma" src="{{firma}}" alt="firma">
-                <hr class="linea-firma">
+                <div class="linea-firma">
+                    .
+                </div>
                 <div class="nombre-firma">
                     {% if doctor.sexo == "M" %}
                     Dr.
@@ -148,7 +151,6 @@
                     {{doctor}}
                 </div>
             </center>
-
     
         </div>
 
