@@ -52,17 +52,26 @@
             </div>
 
             <div class="patient-details">
-                <div class="patient-col">
-                    <div class="inner-patient-col">
-                        <a href="{% url 'videollamada:consultorios' %}" class="btn"><img src='{% static "/img/pwa/imagenvideo.png" %}'></a>
+                <div class="row">
+                    <div class="patient-col col-lg-6 col-sm-12">
+                        <div class="inner-patient-col">
+                            <a href="{% url 'videollamada:consultorios' %}" class="btn"><img src='{% static "/img/pwa/imagenvideo.png" %}'></a>
+                        </div>
                     </div>
-                </div>
-                <div class="patient-col">
-                    <div class="inner-patient-col">
-                        <a href="{% url 'blog:blog' %}" class="btn"><img src='{% static "/img/pwa/saludyb.png" %}'></a>
+                    <div class="patient-col col-lg-6 col-sm-12">
+                        <div class="inner-patient-col">
+                            <a href="{% url 'blog:blog' %}" class="btn"><img src='{% static "/img/pwa/saludyb.png" %}'></a>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            
+            <div style="height: 140px;">
+
+            </div>
+
+
         </div>
     </div>
 </div>

@@ -43,8 +43,8 @@
                         {% endif %}    
                             {{user | title}}                 
                         </a></h4>
-                        <p class="doc-speciality">Cédula Prof.</p>
-                        <h5 class="doc-department">
+                        <p class="doc-speciality">Cédula Prof. {{user.doctor.cedula}}</p>
+                        <!-- <h5 class="doc-department">
                             Especialidad
                         </h5>
                         <div class="doc-info">
@@ -52,27 +52,27 @@
                                 <span class="doc-experince">Otra Informacion</span>
                             </div>
                             <div class="doc-location">
-                                <p>(<i class="fas fa-map-marker-alt"></i> {{user.direccion}} {{user.cp}})</p>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
 
             <div class="patient-details">
-                <div class="inner-patient-detaials">
-                    <div class="patient-col">
+                <div class="row">
+                    <div class="patient-col col-lg-6 col-sm-12">
                         <div class="inner-patient-col">
-                            <a href="{% url 'recetas_app:recetas-doctor' %}" ><<img src='{% static "img/pwa/miconsultorio.png" %}'></a>
+                            <a href="{% url 'recetas_app:recetas-doctor' %}" ><img src='{% static "img/pwa/miconsultorio.png" %}'></a>
                         </div>
                     </div>
-                    <div class="patient-col">
+                    <div class="patient-col col-lg-6 col-sm-12">
                         <div class="inner-patient-col">
-                            <a href="{% url 'users_app:user-profile' %}" ><<img src='{% static "img/pwa/mi-perfil.png" %}'></a>
+                            <a href="{% url 'users_app:user-profile' %}" ><img src='{% static "img/pwa/mi-perfil.png" %}'></a>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 

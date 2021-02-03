@@ -673,7 +673,7 @@ body.overlay-body:before {
 	font-size: 13px;
 }
 .doctor-widget.doctor-dashboard .doc-name {
-	font-size: 16px;
+	font-size: 24px;
 	margin-bottom: 6px;
 }
 .doctor-widget.doctor-dashboard .doc-info-left {
@@ -687,7 +687,7 @@ body.overlay-body:before {
 	padding-top: 10px;
 }
 .doctor-widget.doctor-dashboard .doc-location p {
-	font-size: 13px;
+	font-size: 16px;
 }
 .patient-details {
 	width: auto;
@@ -700,7 +700,7 @@ body.overlay-body:before {
 }
 .patient-details .patient-col {
 	float: left;
-	width: 50%;
+	/* width: 50%; */
 	padding: 10px;
 	text-align: center;
 }
@@ -4515,7 +4515,7 @@ ul li span.trash-icon {
 }
 .doctor-img {
     -ms-flex: 0 0 80px;
-    flex: 0 0 80px;
+    flex: 0 0 120px;
     margin-right: 10px;
     width: 80px;
 	display: flex;
