@@ -12,7 +12,7 @@ class Receta(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     fecha = models.DateField()
     contenido = models.TextField()
-    # qr_code = models.ImageField(upload_to="static/img/recetas/qr", blank=True)
+    qr_code = models.ImageField(upload_to="static/img/recetas/qr", blank=True, null=True)
 
     # def save(self, *args, **kwargs):
     #     qrcode_img = qrcode.make(
