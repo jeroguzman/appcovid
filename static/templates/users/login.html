@@ -70,7 +70,7 @@
                 <span class="login-back">¿No tienes una cuenta? <a href="{% url 'users_app:user-register-paciente' %}">¡Registrate!</a></span>
                 <div class="bottom-social-btn">
                     <ul>
-                        <li><a href="#" class="facebook"><span><img src="{% static 'img/pwa/facebook-letter.svg'%}" alt="facebook"></span>Facebook</a></li>
+                        <li><a href="{% url 'social:begin' 'facebook' %}" class="facebook"><span><img src="{% static 'img/pwa/facebook-letter.svg'%}" alt="facebook"></span>Facebook</a></li>
                         <li><a href="#" class="google"><span><img src="{% static 'img/pwa/google-plus-letter.svg'%}" alt="googleplus"></span>Google</a></li>
                     </ul>
                 </div>
