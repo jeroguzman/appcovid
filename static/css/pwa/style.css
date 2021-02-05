@@ -4500,7 +4500,7 @@ ul li span.trash-icon {
 	margin-top: 20px;
 }
 .doc-info-cont {
-    flex: 0 0 calc(100% - 90px);
+    flex: 0 0 calc(100% - 120px);
     max-width: calc(100% - 90px);
 }
 .doc-info-left {
@@ -4515,9 +4515,9 @@ ul li span.trash-icon {
 }
 .doctor-img {
     -ms-flex: 0 0 80px;
-    flex: 0 0 120px;
+    flex: 0 0 (100% - 140px);
     margin-right: 10px;
-    width: 80px;
+    max-width: 120px;
 	display: flex;
 }
 .doctor-img a {

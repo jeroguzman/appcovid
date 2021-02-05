@@ -1,0 +1,114 @@
+{% extends '../../base.html' %}
+{% load static %}
+{% load humanize %}
+
+<!-- Estilos adicionales -->
+{% block estilos-adicionales %}
+<!-- <link rel="stylesheet" href="{% static 'css/users/register.css'%}"> -->
+{% endblock estilos-adicionales %}
+
+<!-- Titulo -->
+{% block title %}
+    Perfil de {{user.nombre | title}}
+{% endblock title %}
+    
+<!-- Cuerpo -->
+{% block body %}
+
+<div class="main-wrapper">
+
+    {% include '../../includes/paciente/side-menu.html' %}
+    
+    {% include '../../includes/header.html' with title="Perfil de"%}
+
+
+    <div class="page-content pt-0">
+
+        <!-- Doctor Profile -->
+        <div class="doctor-profile-tab pb-0">
+            <div class="container">
+                 <div class="tab-col">
+                     <ul class="nav nav-tabs">
+                        <li><a href="{% url 'users_app:user-update-profile' user.id %}"  class="active">Editar</a></li>  
+                        <!-- <li><a href="#Appointments" data-toggle="tab">Citas</a></li>
+                        <li><a href="#prescriptions" data-toggle="tab">Recetas</a></li>
+                        <li><a href="#medical-records" data-toggle="tab">Medical Records</a></li> -->
+                      </ul>
+                  </div>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="OverView">
+                        <div class="panel panel-default">
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                  <div class="panel-body">
+                                      <div class="tab-widget">
+                                          <div class="left-icon-col">
+                                              <span><img src="{% static 'img/pwa/i-icon.svg' %}" alt="i"></span>
+                                          </div>
+                                          
+                                        <div class="right-content-col">
+                                            <div class="doctor-widget">
+                                                <div class="doc-info-left">
+                                                    <div class="doctor-img">
+                                                        <a href="patient-profile.html" class="doctor-img-profile">
+                                                            <img src="{% static 'img/pwa/patients/patient4.jpg' %}" class="img-fluid img-circle" alt="User Image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="doc-info-cont">
+                                                        <h4 class="doc-name mb-2"><a href="patient-profile.html">{{user | title}}</a></h4>
+                                                        <div class="patient-details-col">
+                                                            <span>Patient ID - {{user.id}}</span>
+                                                        </div>
+                                                        <div class="patient-details-col mt-1"> 
+                                                            <span>Edad - {{user.edad}}</span>
+                                                        </div>
+                                                        <div class="patient-details-col mt-1"> 
+                                                            <span>Sexo - {{user.sexo}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="doc-info-right mt-3">
+                                                    <div class="doc-info">
+                                                        <div class="doc-location">
+                                                            <p><i class="fas fa-phone"></i> {{user.telefono}}</p>
+                                                        </div>
+                                                        <div class="doc-location">
+                                                            <p><i class="fas fa-envelope"></i> {{user.correo}}</p>
+                                                        </div>
+                                                        <div class="doc-location">
+                                                            <p><i class="fas fa-map-marker-alt"></i> {{user.direccion}} {{user.cp}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Doctor Profile -->
+
+    </div>
+
+</div>
+<footer>
+    <div class="footer-fixed">
+        <div>
+        <a href="tel:+526622222222"><button class="btn btn-footer">Call Center</button></a>
+        </div>
+        <div> 
+            <p>Lunes a Domingo | 9:00am - 9:00pm</p>
+            <p>Gobierno Municipal 2018-2021</p>
+        </div>
+       
+    </div>
+</footer>
+
+{% endblock body %}

@@ -1,4 +1,4 @@
-{% extends '../base.html' %}
+{% extends '../../base.html' %}
 {% load static %}
 {% load humanize %}
 
@@ -16,21 +16,22 @@
 {% block body %}
 <div class="main-wrapper">
 
-  {% if user.is_doctor %}
-  {% include '../includes/doctor/side-menu.html' %} 
-  {% else %}
-  {% include '../includes/paciente/side-menu.html' %}
-  {% endif %}
+  {% include '../../includes/doctor/side-menu.html' %}
   
-  {% include '../includes/header.html' with title="Editar Perfil de"%}
+  {% include '../../includes/header.html' with title="Editar Perfil de"%}
 
   <div class="page-content profile-settings pt-0">
 
       <!-- Profile settings -->
       <div class="container">
-
             <div class="tabs-animated-wrap">
               <div class="tabs">
+                <br>
+                <div class="tab-col">
+                  <ul class="nav nav-tabs">
+                     <li><a href="{% url 'users_app:user-update-firma' user.id %}"  class="active">Editar Firma</a></li>  
+                    </ul>
+                </div>
 
                   <div id="Basic-info" class="page-content tab tab-active pt-0 pb-15">
                       <div class="setting-widget">
@@ -44,7 +45,7 @@
                                       <span class="cam-icon"><img src="{% static 'img/pwa/placeholder-small.svg' %}" alt=""></span>
                                   </a>
                               </div>
-                              <form method="POST">
+                              <form method="POST" enctype="multipart/form-data">
                                   {% csrf_token %}
                                     <ul>
                                       <li class="item-content item-input">
@@ -118,20 +119,9 @@
                                       </li>
                                       <li class="item-content item-input">
                                           <div class="item-col">
-                                            <div class="item-title item-label">Dirección</div>
-                                            {{form.errors.direccion}}
+                                            <div class="item-title item-label">Cédula</div>
                                             <div class="item-input-wrap">
-                                                  {{form.direccion}}
-                                                  <span class="input-clear-button"></span>
-                                            </div>
-                                          </div>
-                                      </li>
-                                      <li class="item-content item-input">
-                                          <div class="item-col">
-                                            <div class="item-title item-label">Código Postal</div>
-                                            {{form.errors.cp}}
-                                            <div class="item-input-wrap">
-                                                  {{form.cp}}
+                                                  <input type="number" minlength="8" value="{{user.doctor.cedula}}" name="cedula" id="" placeholder="Cédula" required>
                                                   <span class="input-clear-button"></span>
                                             </div>
                                           </div>

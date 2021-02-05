@@ -14,10 +14,10 @@ from django.views.generic.edit import (
 )
 from .forms import(
     UserRegisterPacienteForm,
-    UserRegisterDoctorForm,
     UserLoginForm,
     UserUpdatePasswordForm,
     UserUpdateProfileForm,
+    UserUpdateFirmaForm,
 )
     
 from .models import User
@@ -83,13 +83,19 @@ class UserUpdatePasswordView(LoginRequiredMixin, FormView):
 
 class UserProfileView(LoginRequiredMixin, TemplateView):
     model = User
-    template_name = 'users/profile.html'
+    template_name = 'users/paciente/profile.html'
     success_url = reverse_lazy('users_app:user-profile')
+    login_url = reverse_lazy('users_app:user-login')
+
+class UserDoctorProfileView(LoginRequiredMixin, TemplateView):
+    model = User
+    template_name = 'users/doctor/profile.html'
+    success_url = reverse_lazy('users_app:user-doctor-profile')
     login_url = reverse_lazy('users_app:user-login')
 
 class UserUpdateProfileView(LoginRequiredMixin, UpdateView):
     model = User
-    template_name = 'users/update-profile.html'
+    template_name = 'users/paciente/update-profile.html'
     form_class = UserUpdateProfileForm
     success_url = '/'
     login_url = reverse_lazy('users_app:user-login')
@@ -109,6 +115,66 @@ class UserUpdateProfileView(LoginRequiredMixin, UpdateView):
                 return redirect('home_app:home')
             else:
                 return redirect('home_app:dashboard')
+        else:
+            return HttpResponseRedirect(
+                reverse('users_app:user-logout')
+            )
+
+
+class UserUpdateDoctorProfileView(LoginRequiredMixin, UpdateView):
+    model = User
+    template_name = 'users/doctor/update-profile.html'
+    form_class = UserUpdateProfileForm
+    success_url = '/'
+    login_url = reverse_lazy('users_app:user-login')
+    queryset = User.objects.all()
+
+    def get_object(self):
+        pk_ = self.kwargs.get("pk")
+        return get_object_or_404(User, pk=pk_)
+
+    def form_valid(self, form):
+        current_user = self.request.user
+        user_to_edit = User.objects.filter(pk=self.kwargs['pk'])
+        doctor = self.request.user.doctor
+
+        if user_to_edit.exists() or current_user.is_superuser:
+            doctor.cedula = self.request.POST['cedula']
+            doctor.save()
+            super(UserUpdateDoctorProfileView, self).form_valid(form)
+
+            if self.request.user.is_paciente:
+                return redirect('home_app:home')
+            else:
+                return redirect('home_app:dashboard')
+        else:
+            return HttpResponseRedirect(
+                reverse('users_app:user-logout')
+            )
+
+class UserUpdateDoctorFirmaView(LoginRequiredMixin, UpdateView):
+    model = User
+    template_name = 'users/doctor/update-firma.html'
+    form_class = UserUpdateFirmaForm
+    success_url = '/'
+    login_url = reverse_lazy('users_app:user-login')
+    queryset = User.objects.all()
+
+    def get_object(self):
+        pk_ = self.kwargs.get("pk")
+        return get_object_or_404(User, pk=pk_)
+
+    def form_valid(self, form):
+        current_user = self.request.user
+        user_to_edit = User.objects.filter(pk=self.kwargs['pk'])
+        doctor = self.request.user.doctor
+
+        if user_to_edit.exists() or current_user.is_superuser:
+            doctor.firma = self.request.FILES['firma']
+            doctor.save()
+            super(UserUpdateDoctorFirmaView, self).form_valid(form)
+
+            return redirect('home_app:dashboard')
         else:
             return HttpResponseRedirect(
                 reverse('users_app:user-logout')

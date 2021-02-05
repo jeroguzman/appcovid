@@ -1,0 +1,87 @@
+{% extends '../../base.html' %}
+{% load static %}
+{% load humanize %}
+
+<!-- Estilos adicionales -->
+{% block estilos-adicionales %}
+<!-- <link rel="stylesheet" href="{% static 'css/users/register.css'%}"> -->
+{% endblock estilos-adicionales %}
+
+<!-- Titulo -->
+{% block title %}
+    Editar Perfil de {{user.nombre | title}}
+{% endblock title %}
+    
+<!-- Cuerpo -->
+{% block body %}
+<div class="main-wrapper">
+
+  {% include '../../includes/doctor/side-menu.html' %}
+  
+  {% include '../../includes/header.html' with title="Editar Perfil de"%}
+
+  <div class="page-content profile-settings pt-0">
+
+      <!-- Profile settings -->
+      <div class="container">
+            <div class="tabs-animated-wrap">
+              <div class="tabs">
+                <br>
+                <div class="tab-col">
+                  <ul class="nav nav-tabs">
+                     <li><a href="{% url 'users_app:user-update-doctor-profile' user.id %}"  class="active">Editar Perfil</a></li>  
+                    </ul>
+                </div>
+
+                  <div id="Basic-info" class="page-content tab tab-active pt-0 pb-15">
+                      <div class="setting-widget">
+                          <div class="list no-hairlines-md">
+                              <div class="widget-title">
+                                  <h5>Información</h5>
+                              </div>
+                              <div class="file-upload">                                  
+                                {% if '.jfif' in user.doctor.firma.url %}
+                                    <p>No ha subido ninguna archivo con su firma. Por favor, seleccione un archivo formato png o jpeg.</p>    
+                                
+                                {% else %}
+                                    <p>Firma Actual:</p>
+                                    <a href="doctor-profile.html" class="file-upload">
+                                        <img src="{{user.doctor.firma.url}}" width="85" alt="Doctor Firma">
+                                    </a>
+                                {% endif %}
+                                      
+                              </div>
+                              <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <ul>
+                                    <li class="item-content item-input">
+                                        <div class="item-col">
+                                            <div class="item-title item-label">Firma Actualizada</div>
+                                            <div class="item-input-wrap">
+                                                <div class="file-upload">
+                                                    {{form}}
+                                                    <span class="placeholder-text">Seleccionar archivo</span>
+                                                </div>
+                                                <div id="uploadPreview"></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="bottom-button">
+                                        <button type="submit" class="btn">ACTUALIZAR FIRMA</button>
+                                    </li>
+                                </ul>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+
+      </div>
+      <!-- Profile settings -->
+  </div>
+
+</div>
+<!-- /Main wrapper -->
+{% endblock body %}
