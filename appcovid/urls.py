@@ -19,5 +19,4 @@ urlpatterns = [
         template_name="push/service-worker.js",
         content_type='application/javascript; charset='+settings.DEFAULT_CHARSET,
     )), name='service-worker.js'),
-    path('', include('social_django.urls', namespace='social'))
 ]

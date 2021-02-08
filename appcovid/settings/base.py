@@ -41,7 +41,6 @@ THIRD_PARTY_APPS = (
     'pwa',
     'commonstuff',
     'push',
-    'social_django',
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
@@ -71,8 +70,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -180,13 +177,13 @@ PWA_APP_DEBUG_MODE = False
 PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/', 'serviceworker.js')
 
 
-#Social Login
+'''Social Login
 
 AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.ModelBackend',
         'social.backends.facebook.FacebookAppOAuth2',
         'social.backends.facebook.FacebookOAuth2',
         'social.backends.twitter.TwitterOAuth',
-        'django.contrib.auth.backends.ModelBackend',
 )
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
@@ -197,4 +194,4 @@ SOCIAL_AUTH_TWITTER_SECRET = ''
 SOCIAL_AUTH_FACEBOOK_KEY = '4091407147545355'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'c324a252f8d8f39031681011bb03cf73'
 
-SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['last_name', 'first_name', 'email']
+SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['last_name', 'first_name', 'email']'''
