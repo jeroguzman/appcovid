@@ -4518,7 +4518,6 @@ ul li span.trash-icon {
     flex: 0 0 (100% - 140px);
     margin-right: 10px;
     max-width: 120px;
-	display: flex;
 }
 .doctor-img a {
 	display: inline-block;
